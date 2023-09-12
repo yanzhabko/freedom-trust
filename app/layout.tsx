@@ -1,5 +1,6 @@
 import "../style/main.scss";
 import type { Metadata } from "next";
+import HeaderComponent from "@/components/HeaderComponent";
 
 export const metadata: Metadata = {
   title: "Freedom Trust",
@@ -13,6 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <HeaderComponent />
       <body>{children}</body>
     </html>
   );
