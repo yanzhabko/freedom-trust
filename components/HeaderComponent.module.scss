@@ -1,2 +1,26 @@
 @import "@/style/mixin";
 @import "@/style/container";
+
+.placeholder {
+  width: 100%;
+  background-color: #0f4ad2;
+  height: 80px;
+}
+
+.navigation {
+	padding: 31px 0;
+  display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&__logo {
+		
+	}
+
+
+  &__list {
+    display: flex;
+		align-items: center;
+		gap: 40px	;
+  }
+}
