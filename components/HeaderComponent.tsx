@@ -26,7 +26,7 @@ const HeaderComponent = () => {
   };
 
   return (
-    <header>
+    <header className={style.header_container }>
       <div className={style.placeholder}>
         <div className={style.placeholder_up}>
           <div className={style.container}>
