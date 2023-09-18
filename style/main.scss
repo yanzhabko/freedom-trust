@@ -1,5 +1,6 @@
 @import "./container";
 @import "./mixin";
+@import "./fonts";
 
 html {
   scroll-behavior: smooth;
@@ -7,6 +8,10 @@ html {
 
 body {
   margin: 0;
+  height: 100vh;
+  display: flex;
+flex-direction: column;
+  font-family: "e-Ukraine-Regular";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -21,6 +26,11 @@ button {
 
 ul,
 ol {
+  margin: 0;
+  padding: 0;
+}
+
+p {
   margin: 0;
   padding: 0;
 }
