@@ -3,10 +3,12 @@
 @import "@/style/fonts";
 @import "@/style/colors";
 
+//DESKTOP
 .placeholder {
   width: 100%;
   background-color: $default-blue;
   height: 100px;
+  z-index: 10;
 }
 
 .placeholder_up {
@@ -100,7 +102,9 @@
     color: $default-white;
 
     &:hover {
-      color: #d9d9d9;
+      border: 1px solid $default-white;
+      border-radius: 20px;
+      padding: 4px 5px;
     }
   }
 
@@ -123,7 +127,11 @@
   }
 
   &__active {
-    color: #d9d9d9;
+    border: 1px solid $default-white;
+    border-radius: 20px;
+    padding: 4px 5px;
+    background-color: $default-white;
+    color: $default-blue;
   }
 
   &__default {
@@ -131,62 +139,62 @@
   }
 }
 
-.menu_wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-self: center;
+//Mobile
+.modal {
+  padding: 25px 0 0 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: $default-blue;
+
   @include for-size(tablet) {
     display: none;
   }
 
-  &__bg {
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(44, 45, 80, 0.4);
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: end;
+  }
+
+  &__navigation {
+    display: flex;
+    position: relative;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+  }
+
+  &__item {
+    padding: 14px 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__link {
+    font-size: 15px;
     color: $default-white;
-    left: 0;
-    bottom: 0;
-    top: 100px;
-    z-index: 10;
-  }
-
-  &__placeholder {
-    position: fixed;
-    width: 582px;
-    height: 290px;
-    right: 0;
-    background-color: $default-blue;
-
-    @media (max-width: 1023px) {
-      max-width: 492px;
-    }
-
-    @media (max-width: 576px) {
-      max-width: 304px;
-    }
-
-    &__list {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      padding: 12px 0 0;
-    }
-
-    &__item {
-      display: flex;
-      justify-content: space-between;
-      position: relative;
-      padding: 14px 40px;
-      font-weight: 600;
-      background-color: $default-blue;
-      cursor: pointer;
-      box-shadow: 0 0 1px transparent;
-    }
-
-    &__link {
-      width: 100%;
-      color: $default-white;
+    &:active {
+      color: #d9d9d9;
     }
   }
+}
+
+.scrolling {
+  overflow: hidden;
 }
