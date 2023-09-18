@@ -74,7 +74,7 @@ const HeaderComponent = () => {
           </nav>
         </div>
       </div>
-
+                      <div></div>
       {isOpen && (
         <div className={style.modal}>
           <div className={classNames(style.container, style.modal__container)}>
