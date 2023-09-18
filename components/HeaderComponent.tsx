@@ -26,7 +26,7 @@ const HeaderComponent = () => {
   };
 
   return (
-    <header>
+    <header className={style.header_container }>
       <div className={style.placeholder}>
         <div className={style.placeholder_up}>
           <div className={style.container}>
@@ -74,7 +74,7 @@ const HeaderComponent = () => {
           </nav>
         </div>
       </div>
-                      <div></div>
+
       {isOpen && (
         <div className={style.modal}>
           <div className={classNames(style.container, style.modal__container)}>
