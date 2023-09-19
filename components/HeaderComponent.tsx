@@ -6,6 +6,7 @@ import { AiOutlineHeart, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
 import { MdOutlineClose } from "react-icons/md";
 import classNames from "classnames";
 import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navigationLink = [
   { title: "About", link: "/about" },
@@ -26,7 +27,7 @@ const HeaderComponent = () => {
   };
 
   return (
-    <header>
+    <header className={style.header_container}>
       <div className={style.placeholder}>
         <div className={style.placeholder_up}>
           <div className={style.container}>
@@ -74,47 +75,62 @@ const HeaderComponent = () => {
           </nav>
         </div>
       </div>
+      <AnimatePresence mode="wait">
+        {isOpen && (
+          <motion.div
+            className={style.modal}
+            initial={{ x: "100%" }}
+            animate={{
+              x: "0%",
+              transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+            }}
+            exit={{
+              x: "100%",
+              transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+            }}
+          >
+            <div
+              className={classNames(style.container, style.modal__placeholder)}
+            >
+              <div className={style.modal__btn}>
+                <button
+                  className={style.navigation__btn_burger}
+                  onClick={toggleMenu}
+                >
+                  <MdOutlineClose
+                    className={style.navigation__btn_burger__icon}
+                  />
+                </button>
+              </div>
 
-      {isOpen && (
-        <div className={style.modal}>
-          <div className={classNames(style.container, style.modal__container)}>
-            <div className={style.modal__btn}>
-              <button
-                className={style.navigation__btn_burger}
-                onClick={toggleMenu}
-              >
-                <MdOutlineClose
-                  className={style.navigation__btn_burger__icon}
-                />
-              </button>
-            </div>
-            <div className={style.modal__navigation}>
-              <div className={style.modal__list}>
-                <div className={style.modal__item}>
-                  <Link
-                    href="/"
-                    className={style.modal__link}
-                    onClick={toggleMenu}
-                  >
-                    Home
-                  </Link>
-                </div>
-                {navigationLink.map((item, index) => (
-                  <div
-                    key={index}
-                    className={style.modal__item}
-                    onClick={toggleMenu}
-                  >
-                    <Link href={item.link} className={style.modal__link}>
-                      {item.title}
+              <nav className={style.modal__navigation}>
+                <div className={style.modal__list}>
+                  <div className={style.modal__item}>
+                    <Link
+                      href="/"
+                      className={style.modal__link}
+                      onClick={toggleMenu}
+                    >
+                      Home
                     </Link>
                   </div>
-                ))}
-              </div>
+                  {navigationLink.map((item, index) => (
+                    <div
+                      key={index}
+                      className={style.modal__item}
+                      onClick={toggleMenu}
+                    >
+                      <Link href={item.link} className={style.modal__link}>
+                        {item.title}
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </nav>
             </div>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

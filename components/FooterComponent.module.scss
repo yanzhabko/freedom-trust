@@ -1,0 +1,74 @@
+@import "@/style/mixin";
+@import "@/style/container";
+@import "@/style/fonts";
+@import "@/style/colors";
+
+.footer_container {
+  width: 100%;
+  margin-top: auto;
+  background-color: $default-blue;
+  height: 160px;
+
+  @include for-size(tablet) {
+    height: 130px;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 25px 0;
+  @include for-size(tablet) {
+    padding: 40px 0;
+  }
+
+  &__logo {
+    color: $default-white;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__copyright {
+    color: #fff;
+    font-weight: 400;
+    font-size: 12px;
+    @include for-size(tablet) {
+      font-size: 14px;
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+    @include for-size(tablet) {
+      flex-direction: row;
+      gap: 15px;
+    }
+    @include for-size(laptop) {
+      flex-direction: row;
+      gap: 25px;
+    }
+    @include for-size(desktop) {
+      gap: 85px;
+    }
+  }
+
+  &__link {
+    color: $default-white;
+    width: max-content;
+    font-size: 12px;
+    @include for-size(tablet) {
+      font-size: 15px;
+    }
+  }
+}
