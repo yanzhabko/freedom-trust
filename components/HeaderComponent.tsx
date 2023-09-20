@@ -114,15 +114,6 @@ const HeaderComponent = () => {
                       Home
                     </Link>
                   </div>
-                  <div className={style.modal__item}>
-                    <Link
-                      href="/donate"
-                      className={style.modal__link}
-                      onClick={toggleMenu}
-                    >
-                      Donate
-                    </Link>
-                  </div>
                   {navigationLink.map((item, index) => (
                     <div
                       key={index}
