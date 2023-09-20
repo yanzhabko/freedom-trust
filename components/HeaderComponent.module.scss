@@ -14,7 +14,6 @@
   width: 100%;
   background-color: $default-blue;
   height: 100%;
-  // height: 100px;
   z-index: 10;
 }
 
@@ -61,6 +60,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @include for-size(tablet) {
+    padding: 24px 0;
+  }
 
   &__logo {
     font-size: 18px;
@@ -90,8 +92,12 @@
     color: $default-white;
 
     &:hover {
-      border: 1px solid $default-white;
-      border-radius: 20px;
+      background: linear-gradient(
+        0deg,
+        rgb(67, 122, 251) 40%,
+        rgba(15, 74, 210, 1) 46%
+      );
+      border-radius: 14px;
       padding: 4px 5px;
     }
   }
@@ -110,16 +116,18 @@
       width: 25px;
       height: 25px;
       color: #fff;
-      position: relative;
     }
   }
 
   &__active {
-    border: 1px solid $default-white;
-    border-radius: 20px;
+    background: linear-gradient(
+      0deg,
+      rgb(67, 122, 251) 40%,
+      rgba(15, 74, 210, 1) 46%
+    );
+    border-radius: 14px;
     padding: 4px 5px;
-    background-color: $default-white;
-    color: $default-blue;
+    // color: $default-white;
   }
 
   &__default {
@@ -129,21 +137,29 @@
 
 //Mobile
 .modal {
-  padding: 25px 0 0 0;
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   width: 100%;
   height: 100vh;
   background-color: $default-blue;
+  padding: 50px 0 20px;
+  max-height: 100vh;
+  overflow-y: auto;
 
   @include for-size(tablet) {
     display: none;
   }
 
-  &__container {
+  &__placeholder {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
+  }
+
+  &__navigation {
+    width: 100%;
   }
 
   &__btn {
@@ -151,19 +167,10 @@
     justify-content: end;
   }
 
-  &__navigation {
-    display: flex;
-    position: relative;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-  }
-
   &__list {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 60px;
   }
 
   &__item {
