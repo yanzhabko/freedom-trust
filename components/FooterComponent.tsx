@@ -32,28 +32,6 @@ const FooterComponent = () => {
             ))}
           </div>
         </div>
-        {/* <div className={style.footer_container__list}>
-          <div className={style.footer_container__item}>
-            <div className={style.footer_container__logo}>Freedom Trust</div>
-            <div className={style.footer_container__link}>
-              ©2023 All Rights Reserved.
-            </div>
-          </div>
-          <div className={style.footer_container__item}>
-            <Link
-              href="mailto:contact@freedomtrust.com"
-              className={style.footer_container__link}
-            >
-              contact@freedomtrust.com
-            </Link>
-            <Link
-              href="tel:+380666650949"
-              className={style.footer_container__link}
-            >
-              +380 66 665 09 49
-            </Link>
-          </div>
-        </div> */}
       </div>
     </footer>
   );
