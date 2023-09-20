@@ -4,8 +4,8 @@ import Link from "next/link";
 
 const FooterComponent = () => {
   const navigationLink = [
-    { title: "Home", link: "/" },
     { title: "About", link: "/about" },
+    { title: "Donate", link: "/donate"},
     { title: "Responsibilities", link: "/responsibilities" },
     { title: "Support", link: "/support" },
     { title: "Contact Us", link: "/contact" },
