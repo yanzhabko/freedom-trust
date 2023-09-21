@@ -1,0 +1,104 @@
+@import "@/style/mixin";
+@import "@/style/container";
+@import "@/style/fonts";
+@import "@/style/colors";
+
+.donate {
+  width: 100%;
+  height: 630px;
+  background-color: $default-blue;
+  padding: 75px 0;
+
+  @include for-size(tablet) {
+    flex-direction: row-reverse;
+  }
+
+  &__container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include for-size(tablet) {
+      gap: 40px;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+    }
+  }
+
+  &__images_container {
+    width: 100%;
+    height: 440px;
+    @include for-size(tablet) {
+      width: 400px;
+      height: auto;
+    }
+  }
+
+  &__images {
+    width: 100%;
+    height: 100%;
+    background-image: url("../../images/home_page/donate_img.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 25px;
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+
+    @include for-size(tablet) {
+      align-items: start;
+    }
+  }
+
+  &__text {
+    // width: 100%;
+    text-align: center;
+    flex-wrap: wrap;
+
+    @include for-size(tablet) {
+      text-align: start;
+      width: 400px;
+    }
+    @include for-size(laptop) {
+      width: 490px;
+    }
+    @include for-size(desktop) {
+      width: 700px;
+    }
+  }
+
+  &__btn {
+    width: 150px;
+    height: 45px;
+    border-radius: 10px;
+    background-color: $default-white;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include for-size(tablet) {
+      width: 200px;
+      height: 45px;
+    }
+
+    &__link {
+      font-size: 14px;
+      font-weight: 600;
+
+      @include for-size(tablet) {
+        font-size: 16px;
+      }
+      @include for-size(laptop) {
+        font-size: 18px;
+      }
+    }
+  }
+}
