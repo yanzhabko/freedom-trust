@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./HeroSection.module.scss";
 import { StaticImageData } from "next/image";
+import classNames from "classnames";
 
 interface HeroProps {
   image: StaticImageData;
@@ -15,10 +16,10 @@ const HeroSection: React.FC<HeroProps> = ({ image, title }) => {
   return (
     <section className={styles.hero}>
       <div style={styleForBackground} className={styles.hero__background}>
-        <div className={styles.hero__container}>
-          <div className={styles.container}>
-            <div className={styles.hero__title}>{title}</div>
-          </div>
+        <div className={classNames(styles.container, styles.hero__container) }>
+         
+            <h1>{title}</h1>
+         
         </div>
       </div>
     </section>
