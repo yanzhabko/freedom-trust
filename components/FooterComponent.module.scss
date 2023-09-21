@@ -10,18 +10,19 @@
   height: 160px;
 
   @include for-size(tablet) {
-    height: 130px;
+    height: 135px;
   }
 }
 
 .footer {
+  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 15px;
   padding: 25px 0;
   @include for-size(tablet) {
-    padding: 40px 0;
+    padding: 35px 0;
   }
 
   &__logo {
@@ -68,7 +69,7 @@
     width: max-content;
     font-size: 12px;
     @include for-size(tablet) {
-      font-size: 15px;
+      font-size: 16px;
     }
   }
 }

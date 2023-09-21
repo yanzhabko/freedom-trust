@@ -88,8 +88,10 @@
   }
 
   &__link {
-    font-size: 15px;
-    color: $default-white;
+    @include for-size(tablet) {
+      font-size: 16px;
+      color: $default-white;
+    }
 
     &:hover {
       background: linear-gradient(
