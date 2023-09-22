@@ -56,11 +56,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     gap: 30px;
 
     @include for-size(tablet) {
       align-items: start;
     }
+
+    &__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      @include for-size(tablet) {
+        gap: 30px;
+        align-items: start;
+      }
+     }
   }
 
   &__text {
@@ -92,6 +104,11 @@
     @include for-size(tablet) {
       width: 200px;
       height: 45px;
+
+    }
+
+    @include for-size(desktop) {
+      
     }
 
     &__link {
