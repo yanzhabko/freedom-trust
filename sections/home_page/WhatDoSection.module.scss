@@ -2,3 +2,132 @@
 @import "@/style/container";
 @import "@/style/fonts";
 @import "@/style/colors";
+
+.what {
+  width: 100%;
+  gap: 30px;
+  padding: 75px 0;
+  position: relative;
+
+  &__list {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    gap: 50px;
+
+    @include for-size(tablet) {
+      flex-direction: row;
+      justify-content: space-around;
+    }
+
+    &__container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-self: center;
+      text-align: center;
+      gap: 20px;
+
+      @include for-size(tablet) {
+        gap: 40px;
+      }
+      @include for-size(laptop) {
+        gap: 60px;
+      }
+    }
+
+    &__title {
+      color: $default-blue;
+      font-size: 16px;
+
+      @include for-size(tablet) {
+        font-size: 20px;
+      }
+      @include for-size(laptop) {
+        font-size: 24px;
+      }
+    }
+  }
+
+  &__title {
+    color: $default-black;
+    text-align: center;
+  }
+
+  &__icon {
+    color: $default-blue;
+    width: 37px;
+    height: 37px;
+
+    &__heart {
+      color: $default-blue;
+      width: 19px;
+      height: 24px;
+    }
+
+    &__hands {
+      color: $default-blue;
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  &__line {
+    border: none;
+    width: 100%;
+    height: 2px;
+    background-image: linear-gradient(
+      #6090ff 0%,
+      #a3ba93 42.19%,
+      #b8c871 55.73%,
+      #fff500 100%
+    );
+    background-size: 100% 100%;
+  }
+
+  &__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+
+    @include for-size(tablet) {
+      gap: 50px;
+    }
+  }
+}
+
+.line {
+  display: none;
+  @include for-size(tablet) {
+    display: block;
+    position: absolute;
+    top: 56%;
+    left: 0;
+    border: none;
+    width: 100%;
+    height: 2px;
+    background-image: linear-gradient(
+      #6090ff 0%,
+      #a3ba93 42.19%,
+      #b8c871 55.73%,
+      #fff500 100%
+    );
+    background-size: 100% 100%;
+  }
+  @include for-size(laptop) {
+    top: 54%;
+  }
+  @include for-size(desktop) {
+    top: 57%;
+  }
+}
