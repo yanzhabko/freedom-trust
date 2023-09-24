@@ -1,0 +1,50 @@
+@import "@/style/mixin";
+@import "@/style/container";
+@import "@/style/fonts";
+@import "@/style/colors";
+
+.ourMisionSection{
+    width: 100%;
+    margin-top: 100px;
+}
+.h2{
+    font-size: 40px;
+    text-align: center;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0); 
+}
+.info{
+    width: 50%;
+    margin: auto;
+}
+.infoSection{
+    width: 950px;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1), 
+    10px 0px 10px rgba(0, 0, 0, 0.1),
+     -10px 0px 10px rgba(0, 0, 0, 0.1);
+     margin-top: 50px;
+    margin-bottom: 80px;
+
+     &__head{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        font-size: 20px;
+
+        &__number{
+            color: white;
+            border: 1px solid $default-blue;
+            border-radius: 15%;
+            font-size: 18px;
+            background-color: $default-blue;
+            padding: 5px;
+        }
+        
+     }
+     &__span{
+        color: rgb(105,105,105);
+        font-size: 16px;
+    }
+}

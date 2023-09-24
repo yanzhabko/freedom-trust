@@ -1,0 +1,54 @@
+@import "@/style/mixin";
+@import "@/style/container";
+@import "@/style/fonts";
+@import "@/style/colors";
+
+.infoConteiner{
+    width: 100%;
+    height: 760px;
+    background-color: $default-blue;
+    padding-top: 150px;
+ 
+    &__infoSection{
+        width: 80%;
+        padding: 20px;
+        margin: auto;
+        color: white;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        text-align: center;
+
+        &__year{
+            width: 188px;
+            height: 67px;
+            display: flex;
+            flex-wrap: wrap;
+            text-align: center;
+            
+        }
+        &__location{
+            width: 188px;
+            height: 67px;
+            display: flex;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+        &__text{
+            width: 714px;
+            height: 508px;
+            display: flex;
+            flex-wrap: wrap;
+            text-align: left;
+        }
+    }
+    &__head{
+        font-size: 20px;
+        width: 100%;
+        color: rgb(203,203,203);
+    }
+    &__info{
+        font-size: 30px;
+        width: 100%;
+    }
+}
