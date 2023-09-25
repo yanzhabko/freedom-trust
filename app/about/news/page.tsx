@@ -1,8 +1,11 @@
 import React from 'react'
+import NewsSection from '@/sections/news_page/NewsSection'
 
 const News = () => {
 	return (
-		<div>page</div>
+		<div>
+			<NewsSection />
+		</div>
 	)
 }
 
