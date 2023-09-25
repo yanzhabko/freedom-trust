@@ -44,7 +44,7 @@ const WhatDoSection = () => {
           </div>
         </div>
       </div>
-      <hr className={styles.line}/>
+      <div className={styles.line}></div>
     </section>
   );
 };
