@@ -46,7 +46,7 @@ const HeaderComponent = () => {
         </div>
         <div className={style.container}>
           <nav className={style.navigation}>
-            <Link href="/" className={style.navigation__logo}>
+            <Link href="/" className={style.navigation__logo} onClick={() => setIsOpen(false)}>
               Freedom Trust
             </Link>
             <ul className={style.navigation__list}>
@@ -70,73 +70,50 @@ const HeaderComponent = () => {
               className={style.navigation__btn_burger}
               onClick={toggleMenu}
             >
-              <AiOutlineMenu className={style.navigation__btn_burger__icon} />
+              {isOpen ? (
+                <MdOutlineClose
+                  className={style.navigation__btn_burger__icon}
+                />
+              ) : (
+                <AiOutlineMenu className={style.navigation__btn_burger__icon} />
+              )}
             </button>
           </nav>
         </div>
       </div>
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {isOpen && (
           <motion.div
-            className={style.modal}
-            initial={{ x: "100%" }}
-            animate={{
-              x: "0%",
-              transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
-            }}
-            exit={{
-              x: "100%",
-              transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
-            }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className={classNames(style.container, style.modal)}
           >
-            <div
-              className={classNames(style.container, style.modal__placeholder)}
-            >
-              <div className={style.modal__btn}>
-                <button
-                  className={style.navigation__btn_burger}
-                  onClick={toggleMenu}
-                >
-                  <MdOutlineClose
-                    className={style.navigation__btn_burger__icon}
-                  />
-                </button>
-              </div>
-
-              <nav className={style.modal__navigation}>
-                <div className={style.modal__list}>
-                  <div className={style.modal__item}>
-                    <Link
-                      href="/"
-                      className={style.modal__link}
-                      onClick={toggleMenu}
-                    >
-                      Home
-                    </Link>
-                  </div>
-                  <div className={style.modal__item}>
-                    <Link
-                      href="/donate"
-                      className={style.modal__link}
-                      onClick={toggleMenu}
-                    >
-                      Donate
-                    </Link>
-                  </div>
-                  {navigationLink.map((item, index) => (
-                    <div
-                      key={index}
-                      className={style.modal__item}
-                      onClick={toggleMenu}
-                    >
-                      <Link href={item.link} className={style.modal__link}>
-                        {item.title}
-                      </Link>
-                    </div>
-                  ))}
+            <nav className={style.modal__navigation}>
+              <div className={style.modal__list}>
+                <div className={style.modal__item}>
+                  <Link
+                    href="/donate"
+                    className={style.modal__link}
+                    onClick={toggleMenu}
+                  >
+                    Donate
+                  </Link>
                 </div>
-              </nav>
-            </div>
+                {navigationLink.map((item, index) => (
+                  <div
+                    key={index}
+                    className={style.modal__item}
+                    onClick={toggleMenu}
+                  >
+                    <Link href={item.link} className={style.modal__link}>
+                      {item.title}
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>
