@@ -62,7 +62,7 @@
   justify-content: space-between;
   align-items: center;
   @include for-size(tablet) {
-    padding: 24px 0;
+    padding: 17px 0;
   }
 
   &__logo {
@@ -77,7 +77,10 @@
     @include for-size(tablet) {
       display: flex;
       align-items: center;
-      gap: 35px;
+      gap: 15px;
+    }
+    @include for-size(laptop) {
+      gap: 20px;
     }
     @include for-size(desktop) {
       gap: 40px;
@@ -90,6 +93,15 @@
 
   &__link {
     @include for-size(tablet) {
+      display: inline-block;
+      justify-content: center;
+      align-items: center;
+      padding: 8px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: $default-white;
+    }
+    @include for-size(laptop) {
       font-size: 16px;
       color: $default-white;
     }
@@ -100,8 +112,6 @@
         rgb(67, 122, 251) 40%,
         rgba(15, 74, 210, 1) 46%
       );
-      border-radius: 14px;
-      padding: 4px 5px;
     }
   }
 
@@ -124,12 +134,10 @@
 
   &__active {
     background: linear-gradient(
-      0deg,
-      rgb(67, 122, 251) 40%,
-      rgba(15, 74, 210, 1) 46%
-    );
-    border-radius: 14px;
-    padding: 4px 5px;
+        0deg,
+        rgb(67, 122, 251) 40%,
+        rgba(15, 74, 210, 1) 46%
+      );
   }
 
   &__default {

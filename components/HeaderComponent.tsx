@@ -46,9 +46,19 @@ const HeaderComponent = () => {
         </div>
         <div className={style.container}>
           <nav className={style.navigation}>
-            <Link href="/" className={style.navigation__logo} onClick={() => setIsOpen(false)}>
-              Freedom Trust
-            </Link>
+            {isOpen ? (
+              <Link
+                href="/"
+                className={style.navigation__logo}
+                onClick={toggleMenu}
+              >
+                Freedom Trust
+              </Link>
+            ) : (
+              <Link href="/" className={style.navigation__logo}>
+                Freedom Trust
+              </Link>
+            )}
             <ul className={style.navigation__list}>
               {navigationLink.map((item, index) => (
                 <li className={classNames(style.navigation__item)} key={index}>
