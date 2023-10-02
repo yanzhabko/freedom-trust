@@ -1,0 +1,13 @@
+{
+  "header": {
+    "contact": "Контакти",
+    "donate": "Пожертва",
+    "about": "Про нас",
+    "responsibilities": "Програми",
+    "support": "Допомога",
+    "contact-us": "Зв'язатись з нами"
+  }, 
+  "home": {
+    "hero_title": "Україна"
+  }
+}
