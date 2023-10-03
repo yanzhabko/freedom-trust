@@ -134,14 +134,55 @@
 
   &__active {
     background: linear-gradient(
-        0deg,
-        rgb(67, 122, 251) 40%,
-        rgba(15, 74, 210, 1) 46%
-      );
+      0deg,
+      rgb(67, 122, 251) 40%,
+      rgba(15, 74, 210, 1) 46%
+    );
   }
 
   &__default {
     color: $default-white;
+  }
+
+  &__language {
+    position: relative;
+
+    &__icon {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+
+    &__container {
+      position: absolute;
+      top: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: $default-blue;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      left: -10px;
+    }
+
+    &__icon path {
+      stroke: white;
+    }
+
+    &__link {
+      @include for-size(tablet) {
+        display: inline-block;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        color: $default-white;
+      }
+      @include for-size(laptop) {
+        font-size: 16px;
+        color: $default-white;
+      }
+    }
   }
 }
 
