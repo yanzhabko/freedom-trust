@@ -157,12 +157,12 @@
       position: absolute;
       top: 100%;
       padding: 10px;
-      border-radius: 10px;
+      border-radius: 0 0 10px 10px;
       background-color: $default-blue;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      gap: 10px;
+      justify-content: space-between;
+      gap: 2px;
       left: -10px;
     }
 
@@ -181,6 +181,10 @@
       @include for-size(laptop) {
         font-size: 16px;
         color: $default-white;
+      }
+      
+      &__active {
+        opacity: 0.75;
       }
     }
   }

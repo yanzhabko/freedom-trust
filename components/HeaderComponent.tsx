@@ -1,22 +1,22 @@
 "use client";
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import style from "./HeaderComponent.module.scss";
 import Link from "next/link";
 import { AiOutlineHeart, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
 import { MdOutlineClose, MdOutlineLanguage } from "react-icons/md";
-
 import { GrLanguage } from "react-icons/gr";
 import classNames from "classnames";
-import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-
 import Links from "next-intl/link";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+import { usePathname, useRouter } from "next-intl/client"
 
 const HeaderComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeLanguage, setActiveLanguage] = useState(false);
   const pathname = usePathname();
+  const router = useRouter()
+  const locale = useLocale()
   const t = useTranslations("header");
 
   const navigationLink = [
@@ -36,6 +36,10 @@ const HeaderComponent = () => {
   const toggleTranslate = () => {
     setActiveLanguage(!activeLanguage);
   };
+
+  const handleLanguageChange = (language: any) => {
+    locale !== language && setActiveLanguage(false)
+  }
 
   return (
     <header className={style.header_container}>
@@ -91,24 +95,48 @@ const HeaderComponent = () => {
                 className={style.navigation__language}
               >
                 <GrLanguage className={style.navigation__language__icon} />
-                {activeLanguage && (
-                  <ul
-                    className={classNames(
-                      style.navigation__language__container
-                    )}
-                  >
-                    <li>
-                      <Links href="/" locale="ua" className={style.navigation__language__link}>
-                        UA
-                      </Links>
-                    </li>
-                    <li>
-                      <Links href="/" locale="en" className={style.navigation__language__link}>
-                        EN
-                      </Links>
-                    </li>
-                  </ul>
-                )}
+                <AnimatePresence>
+                  {activeLanguage && (
+                    <motion.ul
+                      initial={{ opacity: 0, y: -5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -5 }}
+                      transition={{ duration: 0.3 }}
+                      className={classNames(
+                        style.navigation__language__container
+                      )}
+                    >
+                      <li>
+                        <Links
+                          href={`/${pathname}`}
+                          locale="ua"
+                          className={classNames(
+                            locale === "ua"
+                              ? style.navigation__language__link__active
+                              : "",
+                            style.navigation__language__link
+                          )}
+                        >
+                          UA
+                        </Links>
+                      </li>
+                      <li>
+                        <Links
+                          href={`/${pathname}`}
+                          locale="en"
+                          className={classNames(
+                            locale === "en"
+                              ? style.navigation__language__link__active
+                              : "",
+                            style.navigation__language__link
+                          )}
+                        >
+                          EN
+                        </Links>
+                      </li>
+                    </motion.ul>
+                  )}
+                </AnimatePresence>
               </div>
             </ul>
             <button
@@ -126,21 +154,6 @@ const HeaderComponent = () => {
           </nav>
         </div>
       </div>
-      {/* {activeLanguage && (
-        <div
-          className={classNames(
-            style.container,
-            style.navigation__language__container
-          )}
-        >
-          <Links href="/" locale="ua">
-            UA
-          </Links>
-          <Links href="/" locale="en">
-            EN
-          </Links>
-        </div>
-      )} */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
