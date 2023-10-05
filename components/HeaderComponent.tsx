@@ -2,21 +2,26 @@
 import React, { useState } from "react";
 import style from "./HeaderComponent.module.scss";
 import Link from "next/link";
-import { AiOutlineHeart, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
+import {
+  AiOutlineHeart,
+  AiOutlineMail,
+  AiOutlineMenu,
+  AiOutlineUser,
+} from "react-icons/ai";
 import { MdOutlineClose, MdOutlineLanguage } from "react-icons/md";
 import { GrLanguage } from "react-icons/gr";
 import classNames from "classnames";
 import { motion, AnimatePresence } from "framer-motion";
 import Links from "next-intl/link";
 import { useTranslations, useLocale } from "next-intl";
-import { usePathname, useRouter } from "next-intl/client"
+import { usePathname, useRouter } from "next-intl/client";
 
 const HeaderComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeLanguage, setActiveLanguage] = useState(false);
   const pathname = usePathname();
-  const router = useRouter()
-  const locale = useLocale()
+  const router = useRouter();
+  const locale = useLocale();
   const t = useTranslations("header");
 
   const navigationLink = [
@@ -36,10 +41,6 @@ const HeaderComponent = () => {
   const toggleTranslate = () => {
     setActiveLanguage(!activeLanguage);
   };
-
-  const handleLanguageChange = (language: any) => {
-    locale !== language && setActiveLanguage(false)
-  }
 
   return (
     <header className={style.header_container}>
@@ -138,6 +139,11 @@ const HeaderComponent = () => {
                   )}
                 </AnimatePresence>
               </div>
+              <li>
+                <Link href="/login">
+                  <AiOutlineUser className={style.navigation__icon}/>
+                </Link>
+              </li>
             </ul>
             <button
               className={style.navigation__btn_burger}
