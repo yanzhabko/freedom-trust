@@ -8,7 +8,7 @@ import {
   AiOutlineMenu,
   AiOutlineUser,
 } from "react-icons/ai";
-import { MdOutlineClose, MdOutlineLanguage } from "react-icons/md";
+import { MdOutlineClose } from "react-icons/md";
 import { GrLanguage } from "react-icons/gr";
 import classNames from "classnames";
 import { motion, AnimatePresence } from "framer-motion";
@@ -140,8 +140,8 @@ const HeaderComponent = () => {
                 </AnimatePresence>
               </div>
               <li>
-                <Link href="/login">
-                  <AiOutlineUser className={style.navigation__icon}/>
+                <Link href="/registration">
+                  <AiOutlineUser className={style.navigation__icon} />
                 </Link>
               </li>
             </ul>
