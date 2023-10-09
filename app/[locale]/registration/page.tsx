@@ -1,12 +1,13 @@
 import React from "react";
-import RegistrationComponent from "@/components/RegistrationComponent";
+import RegistrationComponent from "@/sections/registration_page/RegistrationSection";
 
 const Registration = () => {
   return (
-    <div>
+    <section>
       <RegistrationComponent />
-    </div>
+    </section>
   );
 };
 
 export default Registration;
+ 

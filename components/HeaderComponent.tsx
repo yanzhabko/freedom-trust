@@ -26,7 +26,7 @@ const HeaderComponent = () => {
 
   const navigationLink = [
     { title: t("about"), link: "/about" },
-    { title: t("responsibilities"), link: "/responsibilities" },
+    { title: t("programs"), link: "/programs" },
     { title: t("support"), link: "/support" },
     { title: t("contact-us"), link: "/contact" },
   ];

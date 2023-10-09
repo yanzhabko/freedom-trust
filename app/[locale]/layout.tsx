@@ -2,6 +2,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 
 import "@/style/main.scss";
+import styles from "./layout.module.scss"
 import type { Metadata } from "next";
 import HeaderComponent from "@/components/HeaderComponent";
 import FooterComponent from "@/components/FooterComponent";
@@ -34,9 +35,11 @@ export default async function RootLayout({
     <html lang={locale}>
       <body>
         <NextIntlClientProvider locale={locale} messages={massages}>
-          <HeaderComponent />
-          {children}
-          <FooterComponent />
+          <div className={styles.root}>
+            <HeaderComponent />
+            {children}
+            <FooterComponent />
+          </div>
         </NextIntlClientProvider>
       </body>
     </html>
