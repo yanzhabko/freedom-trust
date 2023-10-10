@@ -11,13 +11,26 @@
     font-size: 40px;
     text-align: center;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0); 
+    @include for-size(phone){
+        font-size:34px
+    }
+    
+    @include for-size(tablet){
+        font-size:36x
+    }
+    @include for-size(laptop){
+        font-size:38px
+    }
+    @include for-size(desktop){
+        font-size:40px
+    }
 }
 .info{
     width: 50%;
     margin: auto;
 }
 .infoSection{
-    width: 950px;
+    width: 100%;
     padding: 20px;
     border-radius: 30px;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1), 
@@ -32,6 +45,19 @@
         justify-content: space-between;
         margin-bottom: 10px;
         font-size: 20px;
+        @include for-size(phone){
+            font-size:17px
+        }
+        
+        @include for-size(tablet){
+            font-size:18px
+        }
+        @include for-size(laptop){
+            font-size:19px
+        }
+        @include for-size(desktop){
+            font-size:20px
+        }
 
         &__number{
             color: white;
@@ -40,11 +66,37 @@
             font-size: 18px;
             background-color: $default-blue;
             padding: 5px;
+            @include for-size(phone){
+                font-size:15px
+            }
+            
+            @include for-size(tablet){
+                font-size:16px
+            }
+            @include for-size(laptop){
+                font-size:17px
+            }
+            @include for-size(desktop){
+                font-size:18px
+            }
         }
         
      }
      &__span{
         color: rgb(105,105,105);
         font-size: 16px;
+        @include for-size(phone){
+            font-size:13px
+        }
+        
+        @include for-size(tablet){
+            font-size:14px
+        }
+        @include for-size(laptop){
+            font-size:15px
+        }
+        @include for-size(desktop){
+            font-size:16px
+        }
     }
 }

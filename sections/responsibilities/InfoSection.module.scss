@@ -1,0 +1,30 @@
+@import "@/style/mixin";
+@import "@/style/container";
+@import "@/style/fonts";
+@import "@/style/colors";
+
+.textConteiner{
+    width: 80%;
+    margin: auto;
+    padding: 150px 0;
+    color: $default-black;
+    font-size: 24px;
+    &__text{
+        padding-bottom: 20px;
+        width: 100%;
+        height: auto;
+    }
+    @include for-size(phone){
+        font-size:18px
+    }
+    
+    @include for-size(tablet){
+        font-size:20px
+    }
+    @include for-size(laptop){
+        font-size:22px
+    }
+    @include for-size(desktop){
+        font-size:24px
+    }
+}

@@ -3,27 +3,38 @@ import React, { use, useState } from "react";
 import style from "./HeaderComponent.module.scss";
 import Link from "next/link";
 import { AiOutlineHeart, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
-import { MdOutlineClose } from "react-icons/md";
+import { MdOutlineClose, MdOutlineLanguage } from "react-icons/md";
+
+import { GrLanguage } from "react-icons/gr";
 import classNames from "classnames";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
-const navigationLink = [
-  { title: "About", link: "/about" },
-  { title: "Responsibilities", link: "/responsibilities" },
-  { title: "Support", link: "/support" },
-  { title: "Contact Us", link: "/contact" },
-];
+import Links from "next-intl/link";
+import { useTranslations } from "next-intl";
 
 const HeaderComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeLanguage, setActiveLanguage] = useState(false);
   const pathname = usePathname();
+  const t = useTranslations("header");
+
+  const navigationLink = [
+    { title: t("about"), link: "/about" },
+    { title: t("responsibilities"), link: "/responsibilities" },
+    { title: t("support"), link: "/support" },
+    { title: t("contact-us"), link: "/contact" },
+  ];
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     !isOpen
       ? document.body.classList.add(style.scrolling)
       : document.body.classList.remove(style.scrolling);
+  };
+
+  const toggleTranslate = () => {
+    setActiveLanguage(!activeLanguage);
   };
 
   return (
@@ -34,12 +45,12 @@ const HeaderComponent = () => {
             <div className={style.help}>
               <Link href="/donate" className={style.help__list}>
                 <AiOutlineHeart className={style.help__icon} />
-                Donate
+                {t("donate")}
               </Link>
               <div className={style.help__line}></div>
               <Link href="/contact" className={style.help__list}>
                 <AiOutlineMail className={style.help__icon} />
-                Contact
+                {t("contact")}
               </Link>
             </div>
           </div>
@@ -75,6 +86,30 @@ const HeaderComponent = () => {
                   </Link>
                 </li>
               ))}
+              <div
+                onClick={toggleTranslate}
+                className={style.navigation__language}
+              >
+                <GrLanguage className={style.navigation__language__icon} />
+                {activeLanguage && (
+                  <ul
+                    className={classNames(
+                      style.navigation__language__container
+                    )}
+                  >
+                    <li>
+                      <Links href="/" locale="ua" className={style.navigation__language__link}>
+                        UA
+                      </Links>
+                    </li>
+                    <li>
+                      <Links href="/" locale="en" className={style.navigation__language__link}>
+                        EN
+                      </Links>
+                    </li>
+                  </ul>
+                )}
+              </div>
             </ul>
             <button
               className={style.navigation__btn_burger}
@@ -91,6 +126,21 @@ const HeaderComponent = () => {
           </nav>
         </div>
       </div>
+      {/* {activeLanguage && (
+        <div
+          className={classNames(
+            style.container,
+            style.navigation__language__container
+          )}
+        >
+          <Links href="/" locale="ua">
+            UA
+          </Links>
+          <Links href="/" locale="en">
+            EN
+          </Links>
+        </div>
+      )} */}
       <AnimatePresence>
         {isOpen && (
           <motion.div

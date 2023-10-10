@@ -1,0 +1,30 @@
+{
+	"header": {
+		"contact": "Contact",
+		"donate": "Donate",
+		"about": "About",
+		"responsibilities": "Responsibilities",
+		"support": "Support",
+		"contact-us": "Contact Us"
+	},
+	"home": {
+		"hero_title" : "Ukrainian Society for Children and Adults with Autims" 
+	},
+	"about": {
+	  "news":"Last news",
+	  "loadMore":"Load more",
+	  "heroTitleAbout":"Who we are?",
+	  "ourMision":"Our mision",
+	  "location":"headquarter",
+	  "locationCity":"Chernivtsi",
+	  "yearOfFoundation":"year of foundation",
+	  "year": "2022"
+	},
+	"responsibilities": {
+	  "firstParagraph": "The volunteers at Freedom Trust engage in a wide range of activities to support children with autism. They provide one-on-one assistance during therapy sessions, organize recreational activities, assist with educational programs, and offer emotional support to both the children and their families. Additionally, volunteers participate in fundraising events, awareness campaigns, and community outreach programs to promote understanding and acceptance of autism.",
+	  "secondParagraph": "Joining the ranks of Freedom Trust volunteers is an opportunity to be a part of something truly meaningful. By dedicating your time and energy, you can contribute to the well-being and development of children with autism. Volunteering not only allows you to make a difference in their lives but also offers a chance for personal growth and fulfillment.",
+	  "thirsdParagraph": "If you're passionate about helping others and want to make a positive impact, I encourage you to consider volunteering with Freedom Trust. Together, we can create a more inclusive and compassionate society while providing crucial support to children with autism. Take that step, and experience the joy of making a difference.",
+	  "heroTitleResponsibilities":"Volunteer with Freedom Trust"
+	}
+	
+}

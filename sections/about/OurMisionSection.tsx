@@ -1,10 +1,13 @@
+"use client";
 import React from "react";
 import styles from "./OurMisionSection.module.scss";
+import { useTranslations } from "next-intl";
 
 const OurMisionSection=()=>{
+    const t = useTranslations("about");
     return(
         <section className={styles.ourMisionSection}>
-            <h2 className={styles.h2}>Наша місія</h2>
+            <h2 className={styles.h2}>{t("ourMision")}</h2>
             <div className={styles.info}>
                 <div className={styles.infoSection}>
                     <div className={styles.infoSection__head}>
