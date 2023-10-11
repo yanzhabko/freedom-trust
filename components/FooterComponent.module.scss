@@ -187,12 +187,12 @@
 
     &__mail {
       color: $default-white;
-      font-size: 12px;
+      font-size: 11.5px !important ;
       @include for-size(laptop) {
-        font-size: 15px;
+        font-size: 15px !important;
       }
       @include for-size(desktop) {
-        font-size: 20px;
+        font-size: 20px !important;
       }
     }
 
@@ -200,7 +200,7 @@
       background-color: $default-white;
       color: $default-blue;
       padding: 8px 18px;
-      border-radius: 10px;
+      border-radius: 8px;
       border: none;
       font-weight: 600;
 
