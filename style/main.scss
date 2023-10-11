@@ -13,12 +13,17 @@ html {
   scroll-behavior: smooth;
 }
 
+body,
+code {
+  font-family: "e-Ukraine-Regular";
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: "e-Ukraine-Regular";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 
   // DISPLAY FLEX FOR PAGE
   display: flex;
@@ -98,8 +103,14 @@ span {
   font-size: 12px;
   font-weight: 300;
 
-  @include for-size(tablet) {
-    font-size: 14px;
+  @include for-size(laptop) {
+    font-size: 15px;
+  }
+  @include for-size(desktop) {
+    font-size: 20px;
+  }
+  @include for-size(desktop) {
+    font-size: 17px;
   }
 }
 
@@ -111,8 +122,4 @@ img {
 
 li {
   list-style: none;
-}
-
-section {
-  height: 100%;
 }

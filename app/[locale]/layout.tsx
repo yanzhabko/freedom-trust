@@ -12,7 +12,7 @@ export function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  title: "Freedom Trust",
+  title: "FreedomTrust",
   description: "Site",
 };
 

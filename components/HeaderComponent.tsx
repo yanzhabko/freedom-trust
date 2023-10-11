@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./HeaderComponent.module.scss";
 import Link from "next/link";
 import {
@@ -20,7 +20,6 @@ const HeaderComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeLanguage, setActiveLanguage] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
   const locale = useLocale();
   const t = useTranslations("header");
 
@@ -91,7 +90,7 @@ const HeaderComponent = () => {
                   </Link>
                 </li>
               ))}
-              <div
+              <li
                 onClick={toggleTranslate}
                 className={style.navigation__language}
               >
@@ -138,7 +137,7 @@ const HeaderComponent = () => {
                     </motion.ul>
                   )}
                 </AnimatePresence>
-              </div>
+              </li>
               <li>
                 <Link href="/registration">
                   <AiOutlineUser className={style.navigation__icon} />
@@ -171,15 +170,6 @@ const HeaderComponent = () => {
           >
             <nav className={style.modal__navigation}>
               <div className={style.modal__list}>
-                <div className={style.modal__item}>
-                  <Link
-                    href="/donate"
-                    className={style.modal__link}
-                    onClick={toggleMenu}
-                  >
-                    Donate
-                  </Link>
-                </div>
                 {navigationLink.map((item, index) => (
                   <div
                     key={index}
@@ -191,6 +181,35 @@ const HeaderComponent = () => {
                     </Link>
                   </div>
                 ))}
+                <div className={style.modal__item}>
+                  <div className={style.modal__block}>
+                    <Links
+                      href={`/${pathname}`}
+                      locale="en"
+                      className={classNames(
+                        locale === "en"
+                          ? style.navigation__language__link__active
+                          : "",
+                        style.modal__link
+                      )}
+                    >
+                      En
+                    </Links>
+                    <div className={style.modal__line}></div>
+                    <Links
+                      href={`/${pathname}`}
+                      locale="ua"
+                      className={classNames(
+                        locale === "ua"
+                          ? style.navigation__language__link__active
+                          : "",
+                        style.modal__link
+                      )}
+                    >
+                      Ua
+                    </Links>
+                  </div>
+                </div>
               </div>
             </nav>
           </motion.div>
