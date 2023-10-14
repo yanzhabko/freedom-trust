@@ -11,7 +11,7 @@ const FooterComponent = () => {
     { title: "About", link: "/about" },
     { title: "Programs", link: "/programs" },
     { title: "Support", link: "/support" },
-    { title: "Contact Us", link: "/contact" },
+    { title: "Contact Us", link: "/contact-us" },
   ];
 
   const socialLink: { url: string; icon: JSX.Element }[] = [

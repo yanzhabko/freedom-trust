@@ -27,7 +27,7 @@ const HeaderComponent = () => {
     { title: t("about"), link: "/about" },
     { title: t("programs"), link: "/programs" },
     { title: t("support"), link: "/support" },
-    { title: t("contact-us"), link: "/contact" },
+    { title: t("contact-us"), link: "/contact-us" },
   ];
 
   const toggleMenu = () => {
@@ -52,7 +52,7 @@ const HeaderComponent = () => {
                 {t("donate")}
               </Link>
               <div className={style.help__line}></div>
-              <Link href="/contact" className={style.help__list}>
+              <Link href="/contact-us" className={style.help__list}>
                 <AiOutlineMail className={style.help__icon} />
                 {t("contact")}
               </Link>
