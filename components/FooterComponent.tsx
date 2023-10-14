@@ -2,8 +2,7 @@
 import React from "react";
 import style from "./FooterComponent.module.scss";
 import Link from "next/link";
-import { BiLogoGmail } from "react-icons/bi";
-import { AiFillPhone, AiFillYoutube, AiFillInstagram } from "react-icons/ai";
+import { AiFillInstagram } from "react-icons/ai";
 import { GrFacebookOption } from "react-icons/gr";
 import classNames from "classnames";
 
@@ -16,14 +15,6 @@ const FooterComponent = () => {
   ];
 
   const socialLink: { url: string; icon: JSX.Element }[] = [
-    // {
-    //   url: "mailto:freedom-trust@gmail.com",
-    //   icon: <BiLogoGmail className={style.footer__icon}/>,
-    // },
-    // {
-    //   url: "tel:+3800000000",
-    //   icon: <AiFillPhone className={style.footer__icon}/>,
-    // },
     {
       url: "tel:+3800000000",
       icon: <GrFacebookOption className={style.footer__icon} />,

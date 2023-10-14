@@ -1,0 +1,19 @@
+@import "@/style/mixin";
+@import "@/style/container";
+
+.wrapper {
+	min-height: calc(100vh - 320px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	@include for-size(tablet) {
+		min-height: calc(100vh - 189px);
+	}
+	@include for-size(laptop) {
+		min-height: calc(100vh - 205px);
+	}
+	@include for-size(desktop) {
+		min-height: calc(100vh - 264px);
+	}
+}

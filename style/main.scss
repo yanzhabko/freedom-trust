@@ -24,11 +24,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-
-  // DISPLAY FLEX FOR PAGE
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 }
 
 a {
@@ -54,7 +49,6 @@ h6 {
   margin: 0;
   padding: 0;
 }
-
 h1 {
   font-size: 22px;
   font-weight: 500;

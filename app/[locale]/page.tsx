@@ -10,7 +10,7 @@ import { useTranslations } from "next-intl";
 export default function Home() {
   const t = useTranslations('home');
   return (
-    <div>
+    <>
       <HeroSection
         image={BackgroundImages}
         title={t('hero_title')}
@@ -18,6 +18,6 @@ export default function Home() {
       <DonateSection />
       <WhatDoSection />
       <ContactComponent />
-    </div>
+    </>
   );
 }
