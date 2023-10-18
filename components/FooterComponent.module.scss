@@ -6,32 +6,31 @@
 .footer_container {
   width: 100%;
   background-color: $default-blue;
+  padding: 20px 0;
+
+  @include for-size(tablet) {
+    padding: 40px 0;
+  }
+
+  @include for-size(laptop) {
+    padding: 25px 0;
+  }
+  @include for-size(desktop) {
+    padding: 30px 0;
+  }
 }
 
 .footer {
   display: flex;
-  height: 220px;
-  padding: 20px 0;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 
   @include for-size(tablet) {
     justify-content: space-between;
     flex-direction: column;
     flex-direction: row;
     align-items: stretch;
-    height: 189px;
-    padding: 20px 0;
-  }
-
-  @include for-size(laptop) {
-    height: 205px;
-    padding: 25px 0;
-  }
-
-  @include for-size(desktop) {
-    height: 264px;
-    padding: 30px 0;
   }
 
   &__icon {
@@ -55,7 +54,7 @@
 
   &__logo {
     color: $default-white;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
 
     @include for-size(tablet) {
@@ -85,10 +84,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 20px;
+    gap: 30px;
 
     @include for-size(tablet) {
-      width: 61%;
+      width: 56%;
       gap: 0;
     }
 
@@ -123,10 +122,12 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 10px;
+    gap: 5px;
+    width: max-content;
+
     @include for-size(tablet) {
       flex-direction: column;
-      gap: 15px;
+      gap: 10px;
     }
   }
 
@@ -150,7 +151,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 30px;
+    gap: 20px;
 
     @include for-size(tablet) {
       justify-content: space-between;
@@ -160,9 +161,9 @@
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 17px;
+      gap: 10px;
 
-      @include for-size(tablet) {
+       @include for-size(tablet) {
         gap: 14px;
       }
     }
@@ -187,6 +188,7 @@
     &__mail {
       color: $default-white;
       font-size: 11.5px !important;
+
       @include for-size(laptop) {
         font-size: 15px !important;
       }

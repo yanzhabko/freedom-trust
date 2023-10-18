@@ -11,7 +11,7 @@ const FooterComponent = () => {
     { title: "About", link: "/about" },
     { title: "Programs", link: "/programs" },
     { title: "Support", link: "/support" },
-    { title: "Contact Us", link: "/contact" },
+    { title: "Contact Us", link: "/contact-us" },
   ];
 
   const socialLink: { url: string; icon: JSX.Element }[] = [
@@ -52,21 +52,22 @@ const FooterComponent = () => {
           </div>
           <div className={style.footer__contacts}>
             <div className={style.footer__contacts__container}>
+              {/* <div>
+                {socialLink.map((link, index) => (
+                  <Link href={link.url} className={style.footer__icon}>
+                    {link.icon}
+                  </Link>
+                ))}
+              </div> */}
               <Link
-                href="mailto:freedom-trust@gmail.com"
+                href="mailto:freedom.trust@gmail.com"
                 className={style.footer__contacts__mail}
               >
-                freedom-trust@gmail.com
-              </Link>
-              <Link
-                href="tel:freedom-trust@gmail.com"
-                className={style.footer__contacts__mail}
-              >
-                +3800000000
+                office@gmail.com
               </Link>
             </div>
             <div>
-              <Link href="/contact">
+              <Link href="/contact-us">
                 <button
                   className={classNames(
                     style.footer__contacts__btn__text,
