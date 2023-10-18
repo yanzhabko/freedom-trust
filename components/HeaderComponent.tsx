@@ -41,6 +41,20 @@ const HeaderComponent = () => {
     setActiveLanguage(!activeLanguage);
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 767.99) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <header className={style.header_container}>
       <div className={style.placeholder}>

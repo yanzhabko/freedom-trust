@@ -6,7 +6,7 @@
 .donate {
   width: 100%;
   background-color: $default-blue;
-  padding: 75px 0;
+  padding: 70px 0;
 
   &__container {
     width: 100%;
@@ -14,7 +14,6 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    height: 480px;
 
     @include for-size(tablet) {
       height: 380px;
@@ -30,7 +29,7 @@
 
   &__images_container {
     width: 100%;
-    height: 440px;
+    height: 300px;
     @include for-size(tablet) {
       width: 400px;
       height: auto;
@@ -68,7 +67,7 @@
         gap: 30px;
         align-items: start;
       }
-     }
+    }
   }
 
   &__text {
@@ -100,11 +99,9 @@
     @include for-size(tablet) {
       width: 200px;
       height: 45px;
-
     }
 
     @include for-size(desktop) {
-      
     }
 
     &__link {

@@ -243,6 +243,7 @@
 //Mobile
 .modal {
   position: absolute;
+  z-index: 1000;
   right: 0;
   left: 0;
   top: 99%;

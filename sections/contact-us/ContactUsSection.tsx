@@ -3,7 +3,9 @@ import styles from "./ContactUsSection.module.scss"
 
 const ContactUsSection = () => {
 	return (
-		<div>ContactUsSection</div>
+		<div>
+				
+		</div>
 	)
 }
 
