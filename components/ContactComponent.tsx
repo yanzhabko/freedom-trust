@@ -8,7 +8,7 @@ const ContactSection = () => {
 			<div className={styles.container}>
 				<div className={styles.contact__placeholder}>
 					<h1>Let us help you</h1>
-					<div className={styles.contact__btn}><Link href="/contact" className={styles.contact__link}>Book a consultation</Link></div>
+					<div className={styles.contact__btn}><Link href="/contact-us" className={styles.contact__link}>Book a consultation</Link></div>
 				</div>
 			</div>
 		</section>

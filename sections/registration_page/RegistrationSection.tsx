@@ -1,60 +1,76 @@
 "use client";
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import styles from "./RegistrationSection.module.scss";
 import { useForm, Controller } from "react-hook-form";
 import Link from "next/link";
 import InputComponent from "@/components/InputComponent";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import classNames from "classnames";
 
-interface formDate {
-  name: string;
-  email: string;
-  phone: string;
-  password: string;
-  passwordConfirm: string;
-}
+const schema = yup.object({
+  name: yup
+    .string()
+    .required("Name is a required field")
+    .min(2, "Name must be at least 2 characters"),
+  email: yup
+    .string()
+    .required("Email is a required field")
+    .email("Email is not valid"),
+  phoneNumber: yup
+    .string()
+    .required("Phone number is required")
+    .min(11, "Please enter a valid number"),
+  password: yup
+    .string()
+    .required()
+    .matches(
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+      "Password should include at least one lowercase letter, one uppercase letter, and one digit"
+    ),
+  confirmPassword: yup
+    .string()
+    .required("Confirm password is a required field")
+    .oneOf(
+      [yup.ref("password")],
+      "Password and confirm password must be match"
+    ),
+});
 
 const RegistrationComponent = () => {
   const [submitDisabled, setSubmitDisabled] = useState(true);
-
   const {
     register,
     handleSubmit,
     watch,
     reset,
-    formState: { errors },
-    setError,
     control,
-  } = useForm<formDate>({
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       name: "",
       email: "",
-      phone: "",
+      phoneNumber: "",
       password: "",
-      passwordConfirm: "",
+      confirmPassword: "",
     },
+    resolver: yupResolver(schema),
   });
 
-  watch(({ name, email, phone, password, passwordConfirm }) => {
+  watch(({ name, email, phoneNumber, password, confirmPassword }) => {
     setSubmitDisabled(
-      !name || !email || !phone || !password || !passwordConfirm
+      !name || !email || !phoneNumber || !password || !confirmPassword
     );
   });
 
-  const onSubmit = (data: formDate): void => {
-    const { name, email, phone, password, passwordConfirm } = data;
-
-    if (password !== passwordConfirm) {
-      setError("passwordConfirm", {
-        message: "Your password do not match, please try again.",
-      });
-      return;
-    }
+  const onSubmit = (data: any): void => {
     console.log(data);
     reset();
   };
+
+  const invalid = errors.phoneNumber?.message && !submitDisabled;
 
   return (
     <div className={styles.registration_section}>
@@ -64,51 +80,57 @@ const RegistrationComponent = () => {
 
           <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <InputComponent
-              error={errors.name}
-              showError={!submitDisabled}
-              placeholder="Name"
+              label="Name"
               register={register}
               registerName="name"
-              errorText="Please enter your name"
-              pattern={/^[A-Za-z'-]+$/}
+              errorMessage={errors.name?.message}
+              type="text"
+              showError={!submitDisabled}
             />
             <InputComponent
-              error={errors.email}
-              showError={!submitDisabled}
-              placeholder="E-mail"
+              label="E-mail"
               register={register}
               registerName="email"
-              errorText="Please enter a valid e-mail"
-              pattern={/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i}
+              errorMessage={errors.email?.message}
+              type="text"
+              showError={!submitDisabled}
+            />
+            <Controller
+              name="phoneNumber"
+              control={control}
+              render={({ field: { ref, ...field } }) => (
+                <div className={styles.phone__container}>
+                  <PhoneInput
+                    {...field}
+                    inputClass={classNames(styles.phone, {
+                      [styles.errors]: invalid,
+                    })}
+                    buttonClass={classNames(styles.btn, {
+                      [styles.errors]: invalid,
+                    })}
+                    country={"ua"}
+                  />
+                  <p className={styles.error_massages}>
+                    {errors.phoneNumber?.message}
+                  </p>
+                </div>
+              )}
             />
             <InputComponent
-              error={errors.phone}
-              showError={!submitDisabled}
-              placeholder="Phone"
-              register={register}
-              registerName="phone"
-              errorText="Please enter a valid phone"
-              pattern={/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im}
-            />
-            <InputComponent
-              error={errors.password}
-              showError={!submitDisabled}
-              placeholder="Create password"
+              label="Create password"
               register={register}
               registerName="password"
-              errorText="Password should be at least 8 characters long"
-              pattern={/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/}
+              errorMessage={errors.password?.message}
               type="password"
+              showError={!submitDisabled}
             />
             <InputComponent
-              error={errors.passwordConfirm}
-              showError={!submitDisabled}
-              placeholder="Confirm password"
+              label="Confirm password"
               register={register}
-              registerName="passwordConfirm"
-              errorText="Confirm your password"
-              applyValidation={false}
+              registerName="confirmPassword"
+              errorMessage={errors.confirmPassword?.message}
               type="password"
+              showError={!submitDisabled}
             />
             <div className={styles.form__bottom_container}>
               <button

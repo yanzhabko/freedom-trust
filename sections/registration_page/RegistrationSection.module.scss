@@ -83,3 +83,59 @@
     text-decoration-line: underline;
   }
 }
+
+.phone {
+  width: 100% !important;
+  border: none !important;
+  border-radius: 0 !important;
+  border-bottom: 2px solid silver !important;
+  padding-bottom: 0px !important;
+  margin: 0 !important;
+  height: auto !important;
+
+  @include for-size(tablet) {
+    font-size: 14px !important;
+  }
+  @include for-size(laptop) {
+    font-size: 16px !important;
+  }
+  @include for-size(desktop) {
+    font-size: 18px !important;
+  }
+
+  &__container {
+    width: 100%;
+  }
+
+  &:focus {
+    border-radius: 0 !important;
+    border-bottom: 2px solid $default-blue !important;
+  }
+}
+
+.phone:focus + .btn {
+  border-radius: 0 !important;
+  border-bottom: 2px solid $default-blue !important;
+}
+
+.btn {
+  border: none !important;
+  background-color: $default-white !important;
+  border-bottom: 2px solid silver !important;
+}
+
+.error_massages {
+  font-size: 10px;
+  color: $error-color;
+  position: absolute;
+
+  @include for-size(tablet) {
+    padding: 5px 0;
+    font-size: 12px;
+  }
+}
+
+.errors {
+  border-radius: 0 !important;
+  border-bottom: 2px solid $error-color !important;
+}
