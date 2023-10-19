@@ -21,6 +21,7 @@ const InputComponent: FC<inputProps> = ({
   showError,
 }) => {
   const invalid = errorMessage && showError;
+  
 
   return (
     <div className={styles.boxed}>
@@ -29,6 +30,8 @@ const InputComponent: FC<inputProps> = ({
         className={classNames(styles.input, {[styles.errors]: invalid})}
         {...register(registerName)}
         required
+        autoComplete="off"
+        // autocomplete="off"
       />
       <label>{label}</label>
       <p className={styles.error_massages}>{errorMessage}</p>

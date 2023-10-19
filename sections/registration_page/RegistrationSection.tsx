@@ -4,6 +4,7 @@ import styles from "./RegistrationSection.module.scss";
 import { useForm, Controller } from "react-hook-form";
 import Link from "next/link";
 import InputComponent from "@/components/InputComponent";
+import InputPasswordComponent from "@/components/InputPasswordComponent";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -116,7 +117,7 @@ const RegistrationComponent = () => {
                 </div>
               )}
             />
-            <InputComponent
+            {/* <InputComponent
               label="Create password"
               register={register}
               registerName="password"
@@ -130,6 +131,21 @@ const RegistrationComponent = () => {
               registerName="confirmPassword"
               errorMessage={errors.confirmPassword?.message}
               type="password"
+              showError={!submitDisabled}
+            /> */}
+            <InputPasswordComponent
+              label="Create password"
+              register={register}
+              registerName="password"
+              errorMessage={errors.password?.message}
+              type="password"
+              showError={!submitDisabled}
+            />
+            <InputPasswordComponent
+              label="Confirm password"
+              register={register}
+              registerName="confirmPassword"
+              errorMessage={errors.confirmPassword?.message}
               showError={!submitDisabled}
             />
             <div className={styles.form__bottom_container}>
