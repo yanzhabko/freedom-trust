@@ -3,66 +3,54 @@
 @import "@/style/fonts";
 @import "@/style/colors";
 
-.registration_section {
-  width: 100%;
-
-  &__title {
-    color: $default-blue;
-    text-align: center;
-    margin-bottom: 26px;
-
-    @include for-size(tablet) {
-      text-align: start;
-      margin-bottom: 34px;
-    }
-    @include for-size(laptop) {
-      margin-bottom: 38px;
-    }
-    @include for-size(desktop) {
-      margin-bottom: 40px;
-    }
-  }
-
-  &__placeholder {
-    margin: 0 auto;
-    max-width: 233px;
-
-    @include for-size(tablet) {
-      max-width: 320px;
-    }
-    @include for-size(laptop) {
-      max-width: 340px;
-    }
-    @include for-size(desktop) {
-      max-width: 380px;
-    }
-  }
-}
-
 .form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 60px;
+  gap: 40px;
 
-  &__bottom_container {
+  @include for-size(desktop) {
+    padding-left: 54px;
+  }
+
+  &__first_box {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     gap: 10px;
   }
+
+  &__first_second {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__btn_container {
+		padding: 0 20px;
+		width: 100%;
+    display: flex;
+		align-items: center;
+		justify-content: center;
+    gap: 10px;
+
+		&__title {
+			color: $default-blue;
+		}
+  }
+
+	&__link {
+		color: $default-white;
+	}
 
   &__btn {
     border: none;
     background-color: $default-blue;
     color: $default-white;
-    width: 90%;
+    width: 100%;
     padding: 14px 0;
     border-radius: 10px;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 11px;
+		font-weight: 600;
 
     @include for-size(tablet) {
       font-size: 14px;
@@ -74,14 +62,6 @@
       font-size: 18px;
       padding: 15px 0;
     }
-  }
-
-  &__title {
-    color: $default-blue;
-  }
-
-  &__link {
-    text-decoration-line: underline;
   }
 }
 
