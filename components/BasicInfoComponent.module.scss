@@ -1,0 +1,137 @@
+@import "@/style/mixin";
+@import "@/style/container";
+@import "@/style/fonts";
+@import "@/style/colors";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include for-size(desktop) {
+    padding-left: 54px;
+  }
+
+  &__title_container {
+    width: 100%;
+    text-align: center;
+  }
+
+  &__title {
+    color: $default-blue;
+  }
+
+  &__line {
+    background-color: transparent;
+    border-top: 1px dotted $default-blue;
+  }
+
+  &__first_box {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__first_second {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__btn_container {
+		padding: 0 20px;
+		width: 100%;
+    display: flex;
+		align-items: center;
+		justify-content: center;
+    gap: 10px;
+
+		&__title {
+			color: $default-blue;
+		}
+  }
+
+	&__link {
+		color: $default-white;
+	}
+
+  &__btn {
+    border: none;
+    background-color: $default-blue;
+    color: $default-white;
+    width: 100%;
+    padding: 14px 0;
+    border-radius: 10px;
+    font-size: 11px;
+		font-weight: 600;
+
+    @include for-size(tablet) {
+      font-size: 14px;
+    }
+    @include for-size(laptop) {
+      font-size: 16px;
+    }
+    @include for-size(desktop) {
+      font-size: 18px;
+      padding: 15px 0;
+    }
+  }
+}
+
+.phone {
+  width: 100% !important;
+  border: none !important;
+  border-radius: 0 !important;
+  border-bottom: 2px solid silver !important;
+  padding: 4px 5px o !important;
+  margin: 0 !important;
+  height: auto !important;
+
+  @include for-size(tablet) {
+    font-size: 14px !important;
+  }
+  @include for-size(laptop) {
+    font-size: 16px !important;
+  }
+  @include for-size(desktop) {
+    font-size: 18px !important;
+  }
+
+  &__container {
+    width: 100%;
+  }
+
+  &:focus {
+    border-radius: 0 !important;
+    border-bottom: 2px solid $default-blue !important;
+  }
+}
+
+.phone:focus + .btn {
+  border-radius: 0 !important;
+  border-bottom: 2px solid $default-blue !important;
+}
+
+.btn {
+  border: none !important;
+  background-color: $default-white !important;
+  border-bottom: 2px solid silver !important;
+}
+
+.error_massages {
+  font-size: 10px;
+  color: $error-color;
+  position: absolute;
+
+  @include for-size(tablet) {
+    padding: 5px 0;
+    font-size: 12px;
+  }
+}
+
+.errors {
+  border-radius: 0 !important;
+  border-bottom: 2px solid $error-color !important;
+}
