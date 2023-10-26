@@ -63,13 +63,13 @@ h1 {
 }
 
 h2 {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 400;
   @include for-size(tablet) {
-    font-size: 24px;
+    font-size: 20px;
   }
   @include for-size(laptop) {
-    font-size: 26px;
+    font-size: 23px;
   }
   @include for-size(desktop) {
     font-size: 28px;

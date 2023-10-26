@@ -117,22 +117,6 @@ const RegistrationComponent = () => {
                 </div>
               )}
             />
-            {/* <InputComponent
-              label="Create password"
-              register={register}
-              registerName="password"
-              errorMessage={errors.password?.message}
-              type="password"
-              showError={!submitDisabled}
-            />
-            <InputComponent
-              label="Confirm password"
-              register={register}
-              registerName="confirmPassword"
-              errorMessage={errors.confirmPassword?.message}
-              type="password"
-              showError={!submitDisabled}
-            /> */}
             <InputPasswordComponent
               label="Create password"
               register={register}

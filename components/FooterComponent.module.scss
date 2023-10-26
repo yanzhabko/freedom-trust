@@ -56,6 +56,7 @@
     color: $default-white;
     font-size: 15px;
     font-weight: 600;
+    height: min-content;
 
     @include for-size(tablet) {
       font-size: 18px;
