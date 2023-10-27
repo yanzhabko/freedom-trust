@@ -2,7 +2,7 @@ import React from 'react'
 import styles from "./ContactComponent.module.scss"
 import Link from 'next/link'
 
-const ContactSection = () => {
+const ContactComponent = () => {
 	return (
 		<section className={styles.contact}>
 			<div className={styles.container}>
@@ -15,4 +15,4 @@ const ContactSection = () => {
 	)
 }
 
-export default ContactSection
+export default ContactComponent
