@@ -1,0 +1,34 @@
+@import "@/style/mixin";
+@import "@/style/container";
+@import "@/style/fonts";
+@import "@/style/colors";
+
+.history {
+  width: 100%;
+  height: auto;
+  background-color: $default-blue;
+	padding: 100px 0;
+
+  @include for-size(desktop) {
+    padding: 155px 0;
+  }
+
+  &__container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: end;
+  }
+
+  &__btn {
+    border: none;
+    background-color: $default-blue;
+    color: $default-white;
+    font-weight: 500;
+    @include for-size(desktop) {
+      font-size: 18px;
+    }
+  }
+}
