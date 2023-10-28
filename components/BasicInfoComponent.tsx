@@ -219,7 +219,7 @@ const BasicInfoComponent: React.FC<BasicInfoProps> = ({
   return (
     <>
       <div className={styles.form__title_container}>
-        <h1 className={styles.form__title}>Information about your child</h1>
+        <h1 className={styles.form__title}>Information about you</h1>
         <hr className={styles.form__line} />
       </div>
       <div className={styles.form__first_box}>

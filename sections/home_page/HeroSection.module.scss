@@ -8,12 +8,12 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 380px;
+  height: 530px;
   @include for-size(tablet) {
-    height: 600px;
+    height: 610px;
   }
   @include for-size(desktop) {
-    height: 700px;
+    height: 730px;
   }
 
 

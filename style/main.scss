@@ -76,6 +76,21 @@ h2 {
   }
 }
 
+h3 {
+  font-size: 14px;
+  font-weight: 400;
+
+  @include for-size(tablet) {
+    font-size: 16px;
+  }
+  @include for-size(laptop) {
+    font-size: 19px;
+  }
+  @include for-size(desktop) {
+    font-size: 24px;
+  }
+}
+
 p {
   margin: 0;
   padding: 0;

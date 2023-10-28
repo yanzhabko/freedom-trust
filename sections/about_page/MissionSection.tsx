@@ -2,9 +2,9 @@ import React from 'react'
 import styles from "./MissionSection.module.scss"
 const MissionSection = () => {
 	return (
-		<div>
+		<section>
 			
-		</div>
+		</section>
 	)
 }
 

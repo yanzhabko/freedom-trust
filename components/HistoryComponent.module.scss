@@ -1,0 +1,41 @@
+@import "@/style/mixin";
+@import "@/style/container";
+@import "@/style/fonts";
+@import "@/style/colors";
+
+.history_container {
+  width: 100%;
+  display: flex;
+  gap: 11px;
+
+  @include for-size(tablet) {
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  &__boxed {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    text-align: center;
+  }
+
+  &__title {
+    max-width: 120px;
+    color: $gray;
+  }
+
+  &__text {
+    text-align: justify;
+    max-width: 296px;
+
+    @include for-size(tablet) {
+      min-width: 400px;
+    }
+    @include for-size(laptop) {
+      max-width: 500px;
+    }
+  }
+}

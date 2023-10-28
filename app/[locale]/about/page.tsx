@@ -9,13 +9,13 @@ import background from "@/images/about_page/background.png"
 
 const About = () => {
 	return (
-		<section>
+		<div>
 			<HeroSection image={background} title='Title' />
 			<HistorySection />
 			<MissionSection />
 			{/* News */}
 			<ContactComponent />
-		</section>
+		</div>
 	)
 }
 
