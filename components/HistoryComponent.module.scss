@@ -28,7 +28,9 @@
   }
 
   &__text {
-    text-align: justify;
+    margin-top: 25px;
+    overflow: hidden;
+    height: 306px;
     max-width: 296px;
 
     @include for-size(tablet) {

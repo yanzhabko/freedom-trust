@@ -20,11 +20,13 @@ const HistoryComponent: React.FC<HistoryProps> = ({ data }) => {
         <h3 className={styles.history_container__title}>Location</h3>
         <p>{data.location}</p>
       </div>
-      {data.title.split("\n").map((item, index) => (
-        <p className={styles.history_container__text} key={index}>
-          {item}
-        </p>
-      ))}
+      <div className={styles.history_container__text_box}>
+        {data.title.split("\n").map((item, index) => (
+          <p className={styles.history_container__text} key={index}>
+            {item}
+          </p>
+        ))}
+      </div>
     </div>
   );
 };
