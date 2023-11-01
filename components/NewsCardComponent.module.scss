@@ -1,0 +1,34 @@
+@import "@/style/mixin";
+@import "@/style/container";
+@import "@/style/fonts";
+@import "@/style/colors";
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: auto;
+
+  @include for-size(tablet) {
+    align-items: start;
+  }
+
+  &__images {
+    border-radius: 15px;
+  }
+
+  &__date {
+    color: $default-gray;
+  }
+
+  &__title {
+    color: $default-black;
+    text-align: center;
+
+		@include for-size(tablet) {
+			text-align: start;
+		}
+  }
+}
