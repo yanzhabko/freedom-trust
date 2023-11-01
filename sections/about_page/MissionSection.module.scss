@@ -3,3 +3,124 @@
 @import "@/style/fonts";
 @import "@/style/colors";
 
+.mission {
+  width: 100%;
+  height: auto;
+  padding: 100px 0;
+
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+
+    @include for-size(desktop) {
+      gap: 60px;
+    }
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    @include for-size(desktop) {
+      gap: 45px;
+    }
+  }
+
+  &__title {
+    color: $default-black;
+  }
+
+  &__line_first {
+    display: none;
+
+    @include for-size(tablet) {
+      display: block;
+      position: absolute;
+      z-index: 0;
+      background-image: url("../../images//about_page/dotted_line.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: 111px;
+      height: 156px;
+      left: -25px;
+      top: 19%;
+    }
+    @include for-size(laptop) {
+      width: 120px;
+      height: 170px;
+      left: 60px;
+      top: 19%;
+    }
+    @include for-size(desktop) {
+      width: 132px;
+      height: 186px;
+      left: 100px;
+      top: 21%;
+    }
+  }
+
+  &__line_third {
+    display: none;
+
+    @include for-size(tablet) {
+      display: block;
+      position: absolute;
+      z-index: 0;
+      background-image: url("../../images//about_page/dotted_line.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: 111px;
+      height: 156px;
+      left: -25px;
+      top: 67%;
+    }
+    @include for-size(laptop) {
+      width: 120px;
+      height: 170px;
+      left: 60px;
+      top: 67%;
+    }
+    @include for-size(desktop) {
+      width: 132px;
+      height: 186px;
+      left: 100px;
+      top: 68%;
+    }
+  }
+
+  &__line_second {
+    display: none;
+
+    @include for-size(tablet) {
+      display: block;
+      position: absolute;
+      z-index: 0;
+      background-image: url("../../images//about_page/line.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: 80px;
+      height: 159px;
+      right: -25px;
+      top: 44%;
+    }
+    @include for-size(laptop) {
+      width: 80px;
+      height: 159px;
+      right: 60px;
+      top: 44%;
+    }
+    @include for-size(desktop) {
+      width: 80px;
+      height: 181px;
+      right: 100px;
+      top: 45%;
+    }
+  }
+}

@@ -6,8 +6,8 @@
 .what {
   background-color: $default-white;
   width: 100%;
-  gap: 30px;
-  padding: 75px 0;
+  height: auto;
+  padding: 60px 0;
   position: relative;
 
   &__list {
@@ -107,14 +107,12 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    
   }
   @include for-size(laptop) {
     top: 54%;
-    height: 6px
+    height: 6px;
   }
   @include for-size(desktop) {
     top: 57%;
-    // height: 8px
   }
 }

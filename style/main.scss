@@ -116,9 +116,6 @@ span {
     font-size: 15px;
   }
   @include for-size(desktop) {
-    font-size: 20px;
-  }
-  @include for-size(desktop) {
     font-size: 17px;
   }
 }
