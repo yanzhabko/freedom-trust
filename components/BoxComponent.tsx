@@ -2,12 +2,13 @@ import React from "react";
 import styles from "./BoxComponent.module.scss";
 
 interface BoxProps {
-  title: string;
-  number: string;
-  text: string;
+  title?: string;
+  number?: string;
+  text?: string;
 }
 
-const BoxComponent: React.FC<BoxProps> = ({ title, number, text }) => {
+const BoxComponent: React.FC<{ data: BoxProps }> = ({ data }) => {
+  const { title, number, text } = data;
   return (
     <div className={styles.box}>
       <div className={styles.box__container}>
