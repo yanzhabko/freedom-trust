@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./WhatDoSection.module.scss";
-// import { AiOutlineHeart } from "react-icons/ai";
 import { PiHandHeart } from "react-icons/pi";
 import { GoPeople } from "react-icons/go";
 import { HiOutlineBookOpen } from "react-icons/hi";

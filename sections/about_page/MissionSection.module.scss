@@ -6,15 +6,28 @@
 .mission {
   width: 100%;
   height: auto;
-  padding: 100px 0;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  &__desktop {
+    display: none;
+    width: 100%;
+    height: auto;
+    @include for-size(tablet) {
+      display: block;
+    }
+  }
 
   &__container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    align-items: center;
-
+    @include for-size(tablet) {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      align-items: center;
+    }
     @include for-size(desktop) {
       gap: 60px;
     }
@@ -59,7 +72,6 @@
     @include for-size(desktop) {
       width: 132px;
       height: 186px;
-      left: 100px;
       top: 21%;
     }
   }
@@ -89,7 +101,6 @@
     @include for-size(desktop) {
       width: 132px;
       height: 186px;
-      left: 100px;
       top: 68%;
     }
   }
@@ -118,9 +129,16 @@
     }
     @include for-size(desktop) {
       width: 80px;
-      height: 181px;
-      right: 100px;
+      height: 182px;
       top: 45%;
     }
+  }
+}
+
+.mobile_slider {
+  display: block;
+  height: auto;
+  @include for-size(tablet) {
+    display: none;
   }
 }
