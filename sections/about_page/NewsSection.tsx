@@ -6,7 +6,6 @@ import news from "@/date/news.json";
 import classNames from "classnames";
 import Link from "next/link";
 import { Group, MantineProvider, Pagination } from "@mantine/core";
-import { MdArrowBackIosNew } from "react-icons/md";
 import { usePathname } from "next/navigation";
 
 type DataProp = {
@@ -19,23 +18,12 @@ type DataProp = {
 const NewsSection: React.FC = () => {
   const data: { [key: string]: DataProp } = news;
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsToDisplay, setItemsToDisplay] = useState<string[]>([]);
   const totalCard = 6;
   const startIndex = (currentPage - 1) * totalCard;
   const endIndex = startIndex + totalCard;
   const pathname = usePathname();
 
-  useEffect(() => {
-    const displayData = Object.keys(data)
-      .filter((id) => {
-        const item = data[id];
-        return item;
-      })
-      .slice(startIndex, endIndex);
-    setItemsToDisplay(displayData);
-  }, [data, startIndex, endIndex]);
-
-  const handlePageChange = (page) => {
+  const handlePageChange = (page: number) => {
     setCurrentPage(page);
     document.getElementById("news")?.scrollIntoView();
   };
@@ -63,9 +51,14 @@ const NewsSection: React.FC = () => {
         ) : (
           <div className={styles.news__boxed}>
             <div className={styles.news__card_container}>
-              {itemsToDisplay.map((item) => (
-                <NewsCardComponent key={item} data={data[item]} />
-              ))}
+              {Object.keys(data)
+                .filter((id) => {
+                  return data[id];
+                })
+                .slice(startIndex, endIndex)
+                .map((keys) => (
+                  <NewsCardComponent key={keys} data={data[keys]} />
+                ))}
             </div>
             {Object.keys(data).length > 6 && (
               <MantineProvider>
@@ -76,15 +69,7 @@ const NewsSection: React.FC = () => {
                   classNames={styles}
                 >
                   <Group className={styles.group}>
-                    <Pagination.Previous
-                      className={styles.next_back}
-                      icon={MdArrowBackIosNew}
-                    />
                     <Pagination.Items />
-                    <Pagination.Next
-                      className={classNames(styles.next, styles.next_back)}
-                      icon={MdArrowBackIosNew}
-                    />
                   </Group>
                 </Pagination.Root>
               </MantineProvider>
