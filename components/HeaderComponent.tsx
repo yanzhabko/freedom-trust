@@ -14,7 +14,7 @@ import classNames from "classnames";
 import { motion, AnimatePresence } from "framer-motion";
 import Links from "next-intl/link";
 import { useTranslations, useLocale } from "next-intl";
-import { usePathname, useRouter } from "next-intl/client";
+import { usePathname } from "next-intl/client";
 
 const HeaderComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,10 +37,6 @@ const HeaderComponent = () => {
       : document.body.classList.remove(style.scrolling);
   };
 
-  const toggleTranslate = () => {
-    setActiveLanguage(!activeLanguage);
-  };
-
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 767.99) {
@@ -49,7 +45,7 @@ const HeaderComponent = () => {
     };
 
     window.addEventListener("resize", handleResize);
-    
+
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -104,53 +100,38 @@ const HeaderComponent = () => {
                   </Link>
                 </li>
               ))}
-              <li
-                onClick={toggleTranslate}
-                className={style.navigation__language}
-              >
+              <li className={style.navigation__language}>
                 <GrLanguage className={style.navigation__language__icon} />
-                <AnimatePresence>
-                  {activeLanguage && (
-                    <motion.ul
-                      initial={{ opacity: 0, y: -5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -5 }}
-                      transition={{ duration: 0.3 }}
+                <ul className={style.navigation__language__container}>
+                  <li className={style.navigation__language__container__item}>
+                    <Links
+                      href={`/${pathname}`}
+                      locale="ua"
                       className={classNames(
-                        style.navigation__language__container
+                        locale === "ua"
+                          ? style.navigation__language__link__active
+                          : "",
+                        style.navigation__language__link
                       )}
                     >
-                      <li>
-                        <Links
-                          href={`/${pathname}`}
-                          locale="ua"
-                          className={classNames(
-                            locale === "ua"
-                              ? style.navigation__language__link__active
-                              : "",
-                            style.navigation__language__link
-                          )}
-                        >
-                          UA
-                        </Links>
-                      </li>
-                      <li>
-                        <Links
-                          href={`/${pathname}`}
-                          locale="en"
-                          className={classNames(
-                            locale === "en"
-                              ? style.navigation__language__link__active
-                              : "",
-                            style.navigation__language__link
-                          )}
-                        >
-                          EN
-                        </Links>
-                      </li>
-                    </motion.ul>
-                  )}
-                </AnimatePresence>
+                      UA
+                    </Links>
+                  </li>
+                  <li>
+                    <Links
+                      href={`/${pathname}`}
+                      locale="en"
+                      className={classNames(
+                        locale === "en"
+                          ? style.navigation__language__link__active
+                          : "",
+                        style.navigation__language__link
+                      )}
+                    >
+                      EN
+                    </Links>
+                  </li>
+                </ul>
               </li>
               <li>
                 <Link href="/registration">

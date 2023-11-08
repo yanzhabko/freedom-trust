@@ -95,17 +95,14 @@
     border: none;
     background-color: $default-blue;
     color: $default-white;
-    width: 45%;
+    width: 48%;
     padding: 14px 0;
     border-radius: 10px;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
 
-    @include for-size(tablet) {
-      font-size: 14px;
-    }
     @include for-size(laptop) {
-      font-size: 16px;
+      font-size: 15px;
     }
     @include for-size(desktop) {
       font-size: 18px;
