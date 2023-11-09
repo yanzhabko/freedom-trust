@@ -1,9 +1,13 @@
-import React from 'react'
+import NewsSection from "@/sections/about_page//NewsSection";
+import React from "react";
+import styles from "@/sections/AuthSectionCommon.module.scss";
 
 const News = () => {
-	return (
-		<div>page</div>
-	)
-}
+  return (
+    <>
+      <NewsSection />
+    </>
+  );
+};
 
-export default News
+export default News;

@@ -82,7 +82,7 @@
   }
 
   &__logo {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     color: $default-white;
 
@@ -130,7 +130,7 @@
       color: $default-white;
     }
     @include for-size(laptop) {
-      font-size: 16px;
+      font-size: 15px;
     }
     @include for-size(desktop) {
       font-size: 18px;
@@ -186,6 +186,10 @@
       width: 29px;
       height: 29px;
     }
+    @include for-size(desktop) {
+      width: 32px;
+      height: 32px;
+    }
   }
 
   &__language {
@@ -203,17 +207,27 @@
       }
     }
 
+    &:hover &__container {
+      display: block;
+    }
+
     &__container {
+      display: none;
       position: absolute;
-      top: 100%;
-      padding: 10px;
-      border-radius: 0 0 10px 10px;
+      padding: 10px 8px;
+      border-radius: 0 0 8px 8px;
       background-color: $default-blue;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 2px;
-      left: -10px;
+      right: -35%;
+
+      & li:first-child {
+        @include for-size(laptop) {
+          margin-bottom: 5px;
+        }
+      }
+
+      & li {
+        width: max-content;
+      }
     }
 
     &__icon path {
@@ -234,7 +248,7 @@
       }
 
       &__active {
-        opacity: 0.90;
+        opacity: 0.8;
       }
     }
   }

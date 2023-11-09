@@ -6,20 +6,29 @@
 	padding-bottom: 40px;
 }
 
-.indicators {
-	gap: 10px;
-}
-
 .indicator {
-	border-radius: 20px;
-	background-color: $default-white;
+	position: relative;
+	background-color: $default-gray;
 	border: none;
-	width: 20px;
+	width: 15%;
 	height: 7px;
-	border: 0.75px solid $default-black;
+
+
+	&:first-of-type {
+		border-radius: 100px 0 0 100px;
+	}
+
+	&:last-of-type {
+		border-radius:  0 100px 100px 0;
+	}
+	
+	&:nth-of-type() {
+		background-color: #A7CAF0;
+	}
 
 	&[data-active] {
 		background-color: $default-blue;
+		border: none;
 	}
 }
 

@@ -105,11 +105,11 @@
     }
 
     &__link {
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 600;
 
       @include for-size(tablet) {
-        font-size: 16px;
+        font-size: 15px;
       }
       @include for-size(laptop) {
         font-size: 18px;
