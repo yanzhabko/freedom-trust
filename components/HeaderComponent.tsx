@@ -24,10 +24,21 @@ const HeaderComponent = () => {
   const t = useTranslations("header");
 
   const navigationLink = [
-    { title: t("about"), link: "/about" },
-    { title: t("programs"), link: "/programs" },
     { title: t("support"), link: "/support" },
     { title: t("contact-us"), link: "/contact-us" },
+  ];
+  const subMenu = [
+    [
+      { title: "History", link: "/about#history" },
+      { title: "Mission", link: "/about#mission" },
+      { title: "News", link: "/about#news" },
+      { title: "Contact", link: "/about#contact" },
+    ],
+    [
+      { title: "SomeOtherMenuItem", link: "/programs#" },
+      { title: "SomeOtherMenuItem", link: "/programs#" },
+      { title: "SomeOtherMenuItem", link: "/programs#" },
+    ],
   ];
 
   const toggleMenu = () => {
@@ -85,6 +96,68 @@ const HeaderComponent = () => {
               </Link>
             )}
             <ul className={style.navigation__list}>
+              <li
+                className={classNames(
+                  classNames(
+                    pathname.startsWith("/about")
+                      ? style.navigation__item__active
+                      : "",
+                    style.navigation__item
+                  )
+                )}
+              >
+                <Link
+                  href="/about"
+                  className={classNames(style.navigation__link)}
+                >
+                  About
+                </Link>
+                <ul className={style.navigation__sub_menu}>
+                  {subMenu[0].map((item, index) => (
+                    <li
+                      className={style.navigation__sub_menu__item}
+                      key={index}
+                    >
+                      <Link
+                        className={style.navigation__sub_menu__hover_link}
+                        href={item.link}
+                      >
+                        {item.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+              <li
+                className={classNames(
+                  pathname.startsWith("/programs")
+                    ? style.navigation__item__active
+                    : "",
+                  style.navigation__item
+                )}
+              >
+                <Link
+                  href="/programs"
+                  className={classNames(style.navigation__link)}
+                >
+                  Programs
+                </Link>
+                <ul className={style.navigation__sub_menu}>
+                  {subMenu[1].map((item, index) => (
+                    <li
+                      className={style.navigation__sub_menu__item}
+                      key={index}
+                    >
+                      <Link
+                        className={style.navigation__sub_menu__hover_link}
+                        href={item.link}
+                      >
+                        {item.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
               {navigationLink.map((item, index) => (
                 <li className={classNames(style.navigation__item)} key={index}>
                   <Link
