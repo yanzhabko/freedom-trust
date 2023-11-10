@@ -8,7 +8,7 @@ import {
   AiOutlineMenu,
   AiOutlineUser,
 } from "react-icons/ai";
-import { MdOutlineClose } from "react-icons/md";
+import { MdOutlineClose, MdKeyboardArrowDown } from "react-icons/md";
 import { GrLanguage } from "react-icons/gr";
 import classNames from "classnames";
 import { motion, AnimatePresence } from "framer-motion";
@@ -18,7 +18,7 @@ import { usePathname } from "next-intl/client";
 
 const HeaderComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeLanguage, setActiveLanguage] = useState(false);
+  const [openSubMenu, setOpenSubMenu] = useState(0);
   const pathname = usePathname();
   const locale = useLocale();
   const t = useTranslations("header");
@@ -46,6 +46,11 @@ const HeaderComponent = () => {
     !isOpen
       ? document.body.classList.add(style.scrolling)
       : document.body.classList.remove(style.scrolling);
+    toggleSubMenu(0);
+  };
+
+  const toggleSubMenu = (index: number) => {
+    setOpenSubMenu(openSubMenu === index ? 0 : index);
   };
 
   useEffect(() => {
@@ -234,17 +239,115 @@ const HeaderComponent = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className={classNames(style.container, style.modal)}
+            className={classNames( style.modal)}
           >
             <nav className={style.modal__navigation}>
               <div className={style.modal__list}>
+                <div
+                  className={style.modal__item}
+                  onClick={() => toggleSubMenu(1)}
+                >
+                  <div>
+                    <Link
+                      className={classNames(
+                        style.modal__link,
+                        pathname.startsWith("/about") ? style.modal__active : ""
+                      )}
+                      href="#"
+                    >
+                      About
+                      <MdKeyboardArrowDown
+                        className={classNames(
+                          openSubMenu === 1
+                            ? style.modal__row__top
+                            : style.modal__row
+                        )}
+                      />
+                    </Link>
+                  </div>
+                  {openSubMenu === 1 && (
+                    <div className={style.modal__sub_menu}>
+                      {subMenu[0].map((item, index) => (
+                        <div
+                          key={index}
+                          className={style.modal__sub_menu__item}
+                        >
+                          <Link
+                            className={classNames(
+                              style.modal__link,
+                              style.modal__active__selected
+                            )}
+                            href={item.link}
+                            onClick={toggleMenu}
+                          >
+                            {item.title}
+                          </Link>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <div
+                  className={style.modal__item}
+                  onClick={() => toggleSubMenu(2)}
+                >
+                  <Link
+                    className={classNames(
+                      style.modal__link,
+                      pathname.startsWith("/programs")
+                        ? style.modal__active
+                        : ""
+                    )}
+                    href="#"
+                  >
+                    Programs
+                    <MdKeyboardArrowDown
+                      className={classNames(
+                        openSubMenu === 2
+                          ? style.modal__row__top
+                          : style.modal__row
+                      )}
+                    />
+                  </Link>
+
+                  {openSubMenu === 2 && (
+                    <div className={style.modal__sub_menu}>
+                      {subMenu[0].map((item, index) => (
+                        <div
+                          key={index}
+                          className={style.modal__sub_menu__item}
+                        >
+                          <Link
+                            className={classNames(
+                              style.modal__link,
+                              style.modal__active__selected
+                            )}
+                            href={item.link}
+                            onClick={toggleMenu}
+                          >
+                            {item.title}
+                          </Link>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
                 {navigationLink.map((item, index) => (
                   <div
                     key={index}
                     className={style.modal__item}
-                    onClick={toggleMenu}
                   >
-                    <Link href={item.link} className={style.modal__link}>
+                    <Link
+                      href={item.link}
+                      className={classNames(
+                        style.modal__link,
+                        style.modal__active__selected,
+                        pathname.startsWith(item.link)
+                          ? style.modal__active
+                          : ""
+                      )}
+                      onClick={toggleMenu}
+                    >
                       {item.title}
                     </Link>
                   </div>
@@ -254,12 +357,7 @@ const HeaderComponent = () => {
                     <Links
                       href={`/${pathname}`}
                       locale="en"
-                      className={classNames(
-                        locale === "en"
-                          ? style.navigation__language__link__active
-                          : "",
-                        style.modal__link
-                      )}
+                      className={classNames(style.modal__link)}
                     >
                       En
                     </Links>
@@ -267,12 +365,7 @@ const HeaderComponent = () => {
                     <Links
                       href={`/${pathname}`}
                       locale="ua"
-                      className={classNames(
-                        locale === "ua"
-                          ? style.navigation__language__link__active
-                          : "",
-                        style.modal__link
-                      )}
+                      className={classNames(style.modal__link)}
                     >
                       Ua
                     </Links>
