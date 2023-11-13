@@ -6,15 +6,27 @@
 //DESKTOP
 
 .header_container {
-  width: 100%;
-  position: relative;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  transition: transform 0.3s ease-in-out;
+  z-index: 999;
+
+  &__hidden {
+    transform: translateY(-100%);
+  }
+
+  &__fixed {
+    position: sticky;
+    box-shadow: 0 2px 5px rgb(40, 40, 40);
+  }
 }
 
 .placeholder {
   width: 100%;
   background-color: $default-blue;
   height: 100%;
-  z-index: 10;
 }
 
 .placeholder_up {
@@ -325,7 +337,6 @@
   background-color: $default-blue;
   box-shadow: 0px 15px 16px 0px rgba(0, 0, 0, 0.75);
   padding: 10px 0;
-  
 
   @include for-size(tablet) {
     display: none;
