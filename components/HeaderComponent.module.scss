@@ -105,27 +105,41 @@
     @include for-size(tablet) {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 30px;
     }
     @include for-size(laptop) {
-      gap: 20px;
+      gap: 40px;
     }
     @include for-size(desktop) {
-      gap: 30px;
+      gap: 45px;
     }
   }
 
   &__item {
     transform: perspective(1px) translateZ(0);
+    position: relative;
+    padding: 2px 2px;
+    border-radius: 5px;
+
+    &:hover {
+      background: linear-gradient(
+        0deg,
+        rgb(67, 122, 251) 40%,
+        rgba(15, 74, 210, 1) 46%
+      );
+    }
+
+    &__active {
+      background: linear-gradient(
+        0deg,
+        rgb(67, 122, 251) 40%,
+        rgba(15, 74, 210, 1) 46%
+      );
+    }
   }
 
   &__link {
     @include for-size(tablet) {
-      display: inline-block;
-      justify-content: center;
-      align-items: center;
-      padding: 8px;
-      border-radius: 8px;
       font-size: 12px;
       color: $default-white;
     }
@@ -134,14 +148,6 @@
     }
     @include for-size(desktop) {
       font-size: 18px;
-    }
-
-    &:hover {
-      background: linear-gradient(
-        0deg,
-        rgb(67, 122, 251) 40%,
-        rgba(15, 74, 210, 1) 46%
-      );
     }
   }
 
@@ -252,10 +258,61 @@
       }
     }
   }
+
+  &__item:hover &__sub_menu {
+    display: block;
+  }
+
+  &__sub_menu {
+    display: none;
+    position: absolute;
+    background-color: $default-blue;
+    padding: 5px 15px;
+    width: max-content;
+    box-shadow: 0 12px 37px rgba(44, 45, 80, 0.102);
+    top: 26px;
+    border-radius: 0 0 10px 10px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 25%;
+      background-size: cover;
+      top: -6px;
+      left: 10px;
+      height: 10px;
+    }
+
+    &__item {
+      padding-bottom: 5px;
+
+      @include for-size(laptop) {
+        padding-bottom: 8px;
+      }
+    }
+
+    &__hover_link {
+      @include for-size(tablet) {
+        font-size: 12px;
+        color: $default-white;
+      }
+      @include for-size(laptop) {
+        font-size: 15px;
+      }
+      @include for-size(desktop) {
+        font-size: 18px;
+      }
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
 }
 
 //Mobile
 .modal {
+  display: block;
   position: absolute;
   z-index: 1000;
   right: 0;
@@ -263,10 +320,12 @@
   top: 99%;
   width: 100%;
   border: none;
-  height: 225px;
+  height: auto;
   border-radius: 0 0 10px 10px;
   background-color: $default-blue;
   box-shadow: 0px 15px 16px 0px rgba(0, 0, 0, 0.75);
+  padding: 10px 0;
+  
 
   @include for-size(tablet) {
     display: none;
@@ -292,12 +351,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 15px;
   }
 
   &__item {
-    padding: 12px 40px;
-    width: 100%;
+    position: relative;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
@@ -305,8 +365,14 @@
   &__link {
     font-size: 15px;
     color: $default-white;
-    &:active {
-      color: #d9d9d9;
+    text-align: center;
+  }
+
+  &__active {
+    opacity: 0.75;
+
+    &__selected:active {
+      opacity: 0.75;
     }
   }
 
@@ -321,6 +387,32 @@
     height: 19px;
     background-color: $default-white;
     border: none;
+  }
+
+  &__row {
+    position: absolute;
+    top: 1.5px;
+    width: 20px;
+    height: 20px;
+
+    &__top {
+      position: absolute;
+      top: 2px;
+      width: 20px;
+      height: 20px;
+      transform: rotate(180deg);
+    }
+  }
+
+  &__sub_menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    &__item:first-of-type {
+      padding-top: 10px;
+    }
   }
 }
 

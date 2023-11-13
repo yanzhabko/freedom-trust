@@ -14,7 +14,7 @@ const HeroSection: React.FC<HeroProps> = ({ image, title }) => {
   };
 
   return (
-    <section className={styles.hero} style={styleForBackground}>
+    <section className={styles.hero} style={styleForBackground} id="hero">
       <div className={classNames(styles.container, styles.hero__container)}>
         <h1>{title}</h1>
       </div>

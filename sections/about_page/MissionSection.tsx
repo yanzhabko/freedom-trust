@@ -30,7 +30,7 @@ const data: { title: string; number: string; text: string }[] = [
 
 const MissionSection = () => {
   return (
-    <section className={styles.mission}>
+    <section className={styles.mission} id="mission">
       <div className={classNames(styles.container, styles.mission__container)}>
         <h1 className={styles.mission__title}>Our mission</h1>
         <div className={styles.mission__desktop}>
