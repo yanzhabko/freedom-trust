@@ -17,7 +17,8 @@ import { useTranslations, useLocale } from "next-intl";
 import { usePathname } from "next-intl/client";
 
 const HeaderComponent = () => {
-  const prevScroll = useRef(0);
+  // const prevScroll = useRef(0);
+  const [prevScroll, setPrevScroll] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(0);
@@ -59,13 +60,13 @@ const HeaderComponent = () => {
     const handleScroll = () => {
       const { scrollY } = window;
       if (scrollY <= 0) {
-        setIsVisible(true)
-      } else if (scrollY > prevScroll.current) {
-        setIsVisible(false);
-      } else if (scrollY < prevScroll.current) {
+        setIsVisible(true);
+      } else if (scrollY > prevScroll) {
+        setIsVisible(scrollY <= 100);
+      } else if (scrollY < prevScroll) {
         setIsVisible(true);
       }
-      prevScroll.current = scrollY;
+      setPrevScroll(scrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -279,7 +280,6 @@ const HeaderComponent = () => {
                         style.modal__link,
                         pathname.startsWith("/about") ? style.modal__active : ""
                       )}
-                      
                     >
                       About
                       <MdKeyboardArrowDown
@@ -304,8 +304,7 @@ const HeaderComponent = () => {
                               style.modal__active__selected
                             )}
                             href={item.link}
-                            onClick={() =>  toggleMenu()
-                            }
+                            onClick={() => toggleMenu()}
                           >
                             {item.title}
                           </Link>
