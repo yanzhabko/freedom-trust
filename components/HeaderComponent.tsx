@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import style from "./HeaderComponent.module.scss";
 import Link from "next/link";
 import {
@@ -17,6 +17,8 @@ import { useTranslations, useLocale } from "next-intl";
 import { usePathname } from "next-intl/client";
 
 const HeaderComponent = () => {
+  const prevScroll = useRef(0);
+  const [isVisible, setIsVisible] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(0);
   const pathname = usePathname();
@@ -54,6 +56,25 @@ const HeaderComponent = () => {
   };
 
   useEffect(() => {
+    const handleScroll = () => {
+      const { scrollY } = window;
+      if (scrollY <= 0) {
+        setIsVisible(true)
+      } else if (scrollY > prevScroll.current) {
+        setIsVisible(false);
+      } else if (scrollY < prevScroll.current) {
+        setIsVisible(true);
+      }
+      prevScroll.current = scrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScroll, isVisible]);
+
+  useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 767.99) {
         setIsOpen(false);
@@ -68,7 +89,12 @@ const HeaderComponent = () => {
   }, []);
 
   return (
-    <header className={style.header_container}>
+    <header
+      className={classNames(style.header_container, {
+        [style.header_container__hidden]: !isVisible,
+        [style.header_container__fixed]: isVisible,
+      })}
+    >
       <div className={style.placeholder}>
         <div className={style.placeholder_up}>
           <div className={style.container}>
@@ -239,7 +265,7 @@ const HeaderComponent = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className={classNames( style.modal)}
+            className={classNames(style.modal)}
           >
             <nav className={style.modal__navigation}>
               <div className={style.modal__list}>
@@ -248,12 +274,12 @@ const HeaderComponent = () => {
                   onClick={() => toggleSubMenu(1)}
                 >
                   <div>
-                    <Link
+                    <p
                       className={classNames(
                         style.modal__link,
                         pathname.startsWith("/about") ? style.modal__active : ""
                       )}
-                      href="#"
+                      
                     >
                       About
                       <MdKeyboardArrowDown
@@ -263,7 +289,7 @@ const HeaderComponent = () => {
                             : style.modal__row
                         )}
                       />
-                    </Link>
+                    </p>
                   </div>
                   {openSubMenu === 1 && (
                     <div className={style.modal__sub_menu}>
@@ -278,7 +304,8 @@ const HeaderComponent = () => {
                               style.modal__active__selected
                             )}
                             href={item.link}
-                            onClick={toggleMenu}
+                            onClick={() =>  toggleMenu()
+                            }
                           >
                             {item.title}
                           </Link>
@@ -291,14 +318,13 @@ const HeaderComponent = () => {
                   className={style.modal__item}
                   onClick={() => toggleSubMenu(2)}
                 >
-                  <Link
+                  <p
                     className={classNames(
                       style.modal__link,
                       pathname.startsWith("/programs")
                         ? style.modal__active
                         : ""
                     )}
-                    href="#"
                   >
                     Programs
                     <MdKeyboardArrowDown
@@ -308,7 +334,7 @@ const HeaderComponent = () => {
                           : style.modal__row
                       )}
                     />
-                  </Link>
+                  </p>
 
                   {openSubMenu === 2 && (
                     <div className={style.modal__sub_menu}>
@@ -333,10 +359,7 @@ const HeaderComponent = () => {
                   )}
                 </div>
                 {navigationLink.map((item, index) => (
-                  <div
-                    key={index}
-                    className={style.modal__item}
-                  >
+                  <div key={index} className={style.modal__item}>
                     <Link
                       href={item.link}
                       className={classNames(
