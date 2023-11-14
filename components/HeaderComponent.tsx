@@ -17,7 +17,6 @@ import { useTranslations, useLocale } from "next-intl";
 import { usePathname } from "next-intl/client";
 
 const HeaderComponent = () => {
-  // const prevScroll = useRef(0);
   const [prevScroll, setPrevScroll] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
@@ -62,7 +61,7 @@ const HeaderComponent = () => {
       if (scrollY <= 0) {
         setIsVisible(true);
       } else if (scrollY > prevScroll) {
-        setIsVisible(scrollY <= 100);
+        setIsVisible(false);
       } else if (scrollY < prevScroll) {
         setIsVisible(true);
       }
