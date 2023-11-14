@@ -6,6 +6,7 @@ import MedicalInfoComponent from "@/components/MedicalInfoComponent";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import emailService from "@/services/email-service";
 
 const schema = yup.object({
   name: yup
@@ -39,6 +40,17 @@ const schema = yup.object({
     .min(2, "Diagnosis must be at least 2 characters"),
   stage: yup.number().min(1).max(4),
 });
+
+interface FormData {
+  name: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  childName: string;
+  age: number;
+  diagnosis: string;
+  stage?: number;
+}
 
 const ContactUsSection: React.FC = () => {
   const [submitDisabled, setSubmitDisabled] = useState(true);
@@ -100,9 +112,10 @@ const ContactUsSection: React.FC = () => {
     });
   };
 
-  const handleSubmitData = (data: any) => {
-    console.log(data);
+  const handleSubmitData = (data: FormData): void => {
+    emailService.sendEmail(data);
     reset();
+    setStep(1);
   };
 
   return (
