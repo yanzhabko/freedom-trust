@@ -4,29 +4,7 @@ import styles from "./MissionSection.module.scss";
 import BoxComponent from "@/components/BoxComponent";
 import classNames from "classnames";
 import SliderComponent from "@/components/SliderComponent";
-
-const data: { title: string; number: string; text: string }[] = [
-  {
-    title: "Lorem ispum",
-    number: "01",
-    text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout",
-  },
-  {
-    title: "Lorem ispum",
-    number: "02",
-    text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout",
-  },
-  {
-    title: "Lorem ispum",
-    number: "03",
-    text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout",
-  },
-  {
-    title: "Lorem ispum",
-    number: "04",
-    text: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout",
-  },
-];
+import { missionDate } from "@/lib/data";
 
 const MissionSection = () => {
   return (
@@ -35,7 +13,7 @@ const MissionSection = () => {
         <h1 className={styles.mission__title}>Our mission</h1>
         <div className={styles.mission__desktop}>
           <div className={styles.mission__box}>
-            {data.map((item, index) => (
+            {missionDate.map((item, index) => (
               <BoxComponent key={index} data={item} />
             ))}
           </div>
@@ -45,7 +23,7 @@ const MissionSection = () => {
         </div>
       </div>
       <div className={styles.mobile_slider}>
-        <SliderComponent data={data} BoxComponent={BoxComponent} />
+        <SliderComponent data={missionDate} BoxComponent={BoxComponent} />
       </div>
     </section>
   );

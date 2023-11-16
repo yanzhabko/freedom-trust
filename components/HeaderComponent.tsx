@@ -6,42 +6,28 @@ import {
   AiOutlineHeart,
   AiOutlineMail,
   AiOutlineMenu,
-  AiOutlineUser,
 } from "react-icons/ai";
-import { MdOutlineClose, MdKeyboardArrowDown } from "react-icons/md";
-import { GrLanguage } from "react-icons/gr";
+import {
+  MdOutlineClose,
+  MdKeyboardArrowDown,
+  MdLanguage,
+} from "react-icons/md";
+import { LuUser2 } from "react-icons/lu";
 import classNames from "classnames";
 import { motion, AnimatePresence } from "framer-motion";
 import Links from "next-intl/link";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname } from "next-intl/client";
+import { subLink } from "@/lib/data";
 
 const HeaderComponent = () => {
-  const [prevScroll, setPrevScroll] = useState(0);
+  const prevScroll = useRef(0);
   const [isVisible, setIsVisible] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(0);
   const pathname = usePathname();
   const locale = useLocale();
-  const t = useTranslations("header");
-
-  const navigationLink = [
-    { title: t("support"), link: "/support" },
-    { title: t("contact-us"), link: "/contact-us" },
-  ];
-  const subMenu = [
-    [
-      { title: "History", link: "/about#history" },
-      { title: "Mission", link: "/about#mission" },
-      { title: "News", link: "/about#news" },
-      { title: "Contact", link: "/about#contact" },
-    ],
-    [
-      { title: "SomeOtherMenuItem", link: "/programs#" },
-      { title: "SomeOtherMenuItem", link: "/programs#" },
-      { title: "SomeOtherMenuItem", link: "/programs#" },
-    ],
-  ];
+  const t = useTranslations("Header");
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -58,21 +44,20 @@ const HeaderComponent = () => {
   useEffect(() => {
     const handleScroll = () => {
       const { scrollY } = window;
-      if (scrollY <= 0) {
-        setIsVisible(true);
-      } else if (scrollY > prevScroll) {
+      if (scrollY > prevScroll.current) {
         setIsVisible(false);
-      } else if (scrollY < prevScroll) {
+      } else if (scrollY < prevScroll.current) {
         setIsVisible(true);
       }
-      setPrevScroll(scrollY);
+      prevScroll.current = scrollY;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [prevScroll, isVisible]);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -90,10 +75,10 @@ const HeaderComponent = () => {
 
   return (
     <header
-      className={classNames(style.header_container, {
-        [style.header_container__hidden]: !isVisible,
-        [style.header_container__fixed]: isVisible,
-      })}
+      className={classNames(
+        style.header_container,
+        isVisible ? style.header_container__visible : ""
+      )}
     >
       <div className={style.placeholder}>
         <div className={style.placeholder_up}>
@@ -101,12 +86,12 @@ const HeaderComponent = () => {
             <div className={style.help}>
               <Link href="/donate" className={style.help__list}>
                 <AiOutlineHeart className={style.help__icon} />
-                {t("donate")}
+                {t("Donate")}
               </Link>
               <div className={style.help__line}></div>
               <Link href="/contact-us" className={style.help__list}>
                 <AiOutlineMail className={style.help__icon} />
-                {t("contact")}
+                {t("Contact")}
               </Link>
             </div>
           </div>
@@ -141,10 +126,10 @@ const HeaderComponent = () => {
                   href="/about"
                   className={classNames(style.navigation__link)}
                 >
-                  About
+                  {t("About")}
                 </Link>
                 <ul className={style.navigation__sub_menu}>
-                  {subMenu[0].map((item, index) => (
+                  {subLink[0].map((item, index) => (
                     <li
                       className={style.navigation__sub_menu__item}
                       key={index}
@@ -153,7 +138,7 @@ const HeaderComponent = () => {
                         className={style.navigation__sub_menu__hover_link}
                         href={item.link}
                       >
-                        {item.title}
+                        {t(item.title)}
                       </Link>
                     </li>
                   ))}
@@ -171,10 +156,10 @@ const HeaderComponent = () => {
                   href="/programs"
                   className={classNames(style.navigation__link)}
                 >
-                  Programs
+                  {t("Programs")}
                 </Link>
                 <ul className={style.navigation__sub_menu}>
-                  {subMenu[1].map((item, index) => (
+                  {subLink[1].map((item, index) => (
                     <li
                       className={style.navigation__sub_menu__item}
                       key={index}
@@ -189,23 +174,34 @@ const HeaderComponent = () => {
                   ))}
                 </ul>
               </li>
-              {navigationLink.map((item, index) => (
-                <li className={classNames(style.navigation__item)} key={index}>
-                  <Link
-                    href={item.link}
-                    className={classNames(
-                      pathname.startsWith(item.link)
-                        ? style.navigation__active
-                        : "",
-                      style.navigation__link
-                    )}
-                  >
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
+              <li className={classNames(style.navigation__item)}>
+                <Link
+                  href="/support"
+                  className={classNames(
+                    pathname.startsWith("/support")
+                      ? style.navigation__active
+                      : "",
+                    style.navigation__link
+                  )}
+                >
+                  {t("Support")}
+                </Link>
+              </li>
+              <li className={classNames(style.navigation__item)}>
+                <Link
+                  href="/contact-us"
+                  className={classNames(
+                    pathname.startsWith("/contact-us")
+                      ? style.navigation__active
+                      : "",
+                    style.navigation__link
+                  )}
+                >
+                  {t("Contact-us")}
+                </Link>
+              </li>
               <li className={style.navigation__language}>
-                <GrLanguage className={style.navigation__language__icon} />
+                <MdLanguage className={style.navigation__language__icon} />
                 <ul className={style.navigation__language__container}>
                   <li className={style.navigation__language__container__item}>
                     <Links
@@ -237,11 +233,11 @@ const HeaderComponent = () => {
                   </li>
                 </ul>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/registration">
-                  <AiOutlineUser className={style.navigation__icon} />
+                  <LuUser2 className={style.navigation__icon} />
                 </Link>
-              </li>
+              </li> */}
             </ul>
             <button
               className={style.navigation__btn_burger}
@@ -280,7 +276,7 @@ const HeaderComponent = () => {
                         pathname.startsWith("/about") ? style.modal__active : ""
                       )}
                     >
-                      About
+                      {t("About")}
                       <MdKeyboardArrowDown
                         className={classNames(
                           openSubMenu === 1
@@ -292,7 +288,7 @@ const HeaderComponent = () => {
                   </div>
                   {openSubMenu === 1 && (
                     <div className={style.modal__sub_menu}>
-                      {subMenu[0].map((item, index) => (
+                      {subLink[0].map((item, index) => (
                         <div
                           key={index}
                           className={style.modal__sub_menu__item}
@@ -305,7 +301,7 @@ const HeaderComponent = () => {
                             href={item.link}
                             onClick={() => toggleMenu()}
                           >
-                            {item.title}
+                            {t(item.title)}
                           </Link>
                         </div>
                       ))}
@@ -324,7 +320,7 @@ const HeaderComponent = () => {
                         : ""
                     )}
                   >
-                    Programs
+                    {t("Programs")}
                     <MdKeyboardArrowDown
                       className={classNames(
                         openSubMenu === 2
@@ -336,7 +332,7 @@ const HeaderComponent = () => {
 
                   {openSubMenu === 2 && (
                     <div className={style.modal__sub_menu}>
-                      {subMenu[0].map((item, index) => (
+                      {subLink[1].map((item, index) => (
                         <div
                           key={index}
                           className={style.modal__sub_menu__item}
@@ -349,30 +345,41 @@ const HeaderComponent = () => {
                             href={item.link}
                             onClick={toggleMenu}
                           >
-                            {item.title}
+                            {t(item.title)}
                           </Link>
                         </div>
                       ))}
                     </div>
                   )}
                 </div>
-                {navigationLink.map((item, index) => (
-                  <div key={index} className={style.modal__item}>
-                    <Link
-                      href={item.link}
-                      className={classNames(
-                        style.modal__link,
-                        style.modal__active__selected,
-                        pathname.startsWith(item.link)
-                          ? style.modal__active
-                          : ""
-                      )}
-                      onClick={toggleMenu}
-                    >
-                      {item.title}
-                    </Link>
-                  </div>
-                ))}
+                <div className={style.modal__item}>
+                  <Link
+                    href="/support"
+                    className={classNames(
+                      style.modal__link,
+                      style.modal__active__selected,
+                      pathname.startsWith("/support") ? style.modal__active : ""
+                    )}
+                    onClick={toggleMenu}
+                  >
+                    {t("Support")}
+                  </Link>
+                </div>
+                <div className={style.modal__item}>
+                  <Link
+                    href="/contact-us"
+                    className={classNames(
+                      style.modal__link,
+                      style.modal__active__selected,
+                      pathname.startsWith("/contact-us")
+                        ? style.modal__active
+                        : ""
+                    )}
+                    onClick={toggleMenu}
+                  >
+                    {t("Contact-us")}
+                  </Link>
+                </div>
                 <div className={style.modal__item}>
                   <div className={style.modal__block}>
                     <Links

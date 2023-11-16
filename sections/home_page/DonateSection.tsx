@@ -23,11 +23,13 @@ const DonateSection = () => {
             </p>
           </div>
           <div>
-            <div className={styles.donate__btn}>
-              <Link href="/donate" className={styles.donate__btn__link}>
-                Donate now
-              </Link>
-            </div>
+            <Link href="/donate">
+              <button
+                className={classNames(styles.donate__btn, styles.donate__text)}
+              >
+                Donate
+              </button>
+            </Link>
           </div>
         </div>
       </div>

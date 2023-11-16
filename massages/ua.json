@@ -1,13 +1,26 @@
 {
-  "header": {
-    "contact": "Контакти",
-    "donate": "Пожертва",
-    "about": "Про нас",
-    "programs": "Програми",
-    "support": "Допомога",
-    "contact-us": "Зв'язатись"
-  }, 
-  "home": {
-    "hero_title": "Україна"
+  "Header": {
+    "Contact": "Контакти",
+    "Donate": "Пожертва",
+    "About": "Про нас",
+    "Programs": "Програми",
+    "Support": "Допомога",
+    "Contact-us": "Зв'язатись",
+    "History": "Історія",
+    "Mission": "Місія",
+    "News": "Новини",
+    "Consultation": "Консультація"
+  },
+  "Home": {
+    "hero_title": "Українське товариство дітей та дорослих з аутизмом"
+  },
+
+  "Footer": {
+    "Rights": "©2023 Всі права захищені.",
+    "About": "Про нас",
+    "Programs": "Програми",
+    "Support": "Допомога",
+    "Contact-us": "Зв'язатись",
+    "Consultation": "Запис на консультація"
   }
 }

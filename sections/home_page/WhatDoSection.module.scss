@@ -47,14 +47,6 @@
 
     &__title {
       color: $default-blue;
-      font-size: 16px;
-
-      @include for-size(tablet) {
-        font-size: 20px;
-      }
-      @include for-size(laptop) {
-        font-size: 24px;
-      }
     }
   }
 
@@ -64,20 +56,16 @@
   }
 
   &__icon {
-    color: $default-blue;
-    width: 37px;
-    height: 37px;
-
-    &__heart {
+    svg {
       color: $default-blue;
-      width: 19px;
-      height: 24px;
-    }
+      width: 28px;
+      height: 28px;
 
-    &__hands {
-      color: $default-blue;
-      width: 25px;
-      height: 25px;
+      @include for-size(tablet) {
+        color: $default-blue;
+        width: 32px;
+        height: 32px;
+      }
     }
   }
 

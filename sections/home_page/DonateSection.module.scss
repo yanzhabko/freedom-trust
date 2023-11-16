@@ -87,33 +87,22 @@
   }
 
   &__btn {
-    width: 150px;
-    height: 45px;
-    border-radius: 10px;
     background-color: $default-white;
+    color: $default-blue;
+    padding: 12px 50px;
+    border-radius: 8px;
     border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-weight: 600;
 
     @include for-size(tablet) {
-      width: 200px;
-      height: 45px;
+      padding: 15px 50px;
     }
-
+    @include for-size(laptop) {
+      padding: 15px 70px;
+      font-size: 16px;
+    }
     @include for-size(desktop) {
-    }
-
-    &__link {
-      font-size: 12px;
-      font-weight: 600;
-
-      @include for-size(tablet) {
-        font-size: 15px;
-      }
-      @include for-size(laptop) {
-        font-size: 18px;
-      }
+      font-size: 18px;
     }
   }
 }
