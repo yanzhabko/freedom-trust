@@ -1,5 +1,5 @@
 import React from "react";
-import ContactComponent from "@/components/ContactComponent";
+import ConsultationComponent from "@/components/ConsultationComponent";
 import HistorySection from "@/sections/about_page/HistorySection";
 import MissionSection from "@/sections/about_page/MissionSection";
 import HeroSection from "@/sections/home_page/HeroSection";
@@ -14,7 +14,7 @@ const About = () => {
       <HistorySection />
       <MissionSection />
       <NewsSection />
-      <ContactComponent />
+      <ConsultationComponent />
     </MantineProvider>
   );
 };

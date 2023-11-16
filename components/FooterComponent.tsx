@@ -5,15 +5,11 @@ import Link from "next/link";
 import { AiFillInstagram } from "react-icons/ai";
 import { GrFacebookOption } from "react-icons/gr";
 import classNames from "classnames";
+import { footerLink } from "@/lib/data";
+import { useTranslations } from "next-intl"
 
 const FooterComponent = () => {
-  const navigationLink: { title: string; link: string }[] = [
-    { title: "About", link: "/about" },
-    { title: "Programs", link: "/programs" },
-    { title: "Support", link: "/support" },
-    { title: "Contact Us", link: "/contact-us" },
-  ];
-
+  const t = useTranslations('Footer')
   const socialLink: { url: string; icon: JSX.Element }[] = [
     {
       url: "tel:+3800000000",
@@ -35,19 +31,19 @@ const FooterComponent = () => {
                 Freedom Trust
               </Link>
               <div className={style.footer__navigation}>
-                {navigationLink.map((item, index) => (
+                {footerLink.map((item, index) => (
                   <Link
                     key={index}
                     href={item.link}
                     className={style.footer__link}
                   >
-                    {item.title}
+                    {t(item.title)}
                   </Link>
                 ))}
               </div>
             </div>
             <span className={style.footer__copyright}>
-              ©2023 All Rights Reserved.
+              {t("Rights")}
             </span>
           </div>
           <div className={style.footer__contacts}>
@@ -74,7 +70,7 @@ const FooterComponent = () => {
                     style.footer__contacts__btn
                   )}
                 >
-                  Book consultation
+                  {t("Consultation")}
                 </button>
               </Link>
             </div>

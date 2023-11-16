@@ -1,14 +1,26 @@
 {
-	"header": {
-		"contact": "Contact",
-		"donate": "Donate",
-		"about": "About",
-		"programs": "Programs",
-		"support": "Support",
-		"contact-us": "Contact Us"
-	},
-	"home": {
-		"hero_title" : "Ukrainian Society for Children and Adults with Autims" 
-	}
-	
+  "Header": {
+    "Contact": "Contact",
+    "Donate": "Donate",
+    "About": "About",
+    "Programs": "Programs",
+    "Support": "Support",
+    "Contact-us": "Contact Us",
+    "History": "History",
+    "Mission": "Mission",
+    "News": "News",
+    "Consultation": "Consultation"
+  },
+  "Home": {
+    "hero_title": "Ukrainian Society for Children and Adults with Autims"
+  },
+
+  "Footer": {
+    "Rights": "©2023 All Rights Reserved.",
+    "About": "About",
+    "Programs": "Programs",
+    "Support": "Support",
+    "Contact-us": "Contact Us",
+    "Consultation": "Book consultation"
+  }
 }
