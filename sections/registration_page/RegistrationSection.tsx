@@ -78,7 +78,6 @@ const RegistrationComponent = () => {
       <div className={styles.container}>
         <div className={styles.registration_section__placeholder}>
           <h2 className={styles.registration_section__title}>Registration</h2>
-
           <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <InputComponent
               label="Name"
@@ -141,9 +140,9 @@ const RegistrationComponent = () => {
                 Continue
               </button>
               <span className={styles.form__title}>
-                Have an account?{" "}
+                Have an account?
                 <Link href="/login" className={styles.form__link}>
-                  Log in
+                  Log-in
                 </Link>
               </span>
             </div>

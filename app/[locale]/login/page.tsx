@@ -1,11 +1,12 @@
+import LoginSection from "@/sections/login_page/LoginSection";
+import styles from "@/sections/AuthSectionCommon.module.scss";
 import React from "react";
-// import LoginComponent from "@/components/LoginComponent";
 
 const Login = () => {
   return (
-    <div>
-      {/* <LoginComponent /> */}
-    </div>
+    <section className={styles.wrapper}>
+      <LoginSection />
+    </section>
   );
 };
 

@@ -75,10 +75,13 @@
 
   &__title {
     color: $default-blue;
+    display: flex;
+    gap: 2px;
   }
 
   &__link {
     text-decoration-line: underline;
+    color: $default-blue;
   }
 }
 
