@@ -45,10 +45,11 @@ const HeaderComponent = () => {
     const handleScroll = () => {
       const { scrollY } = window;
       if (scrollY > prevScroll.current) {
-        setIsVisible(false);
+        setIsVisible(scrollY < 20);
       } else if (scrollY < prevScroll.current) {
         setIsVisible(true);
       }
+      console.log(scrollY)
       prevScroll.current = scrollY;
     };
 

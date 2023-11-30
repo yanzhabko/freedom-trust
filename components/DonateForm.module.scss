@@ -1,0 +1,158 @@
+@import "@/style/mixin";
+@import "@/style/container";
+@import "@/style/fonts";
+@import "@/style/colors";
+
+.form {
+  height: auto;
+  padding: 55px 20px;
+  // padding: 70px 40px;
+  background-color: $default-white;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+
+  @include for-size(tablet) {
+    padding: 70px 40px;
+  }
+
+  &__placeholder {
+    width: 80%;
+
+    @include for-size(tablet) {
+      max-width: 325px;
+    }
+    @include for-size(laptop) {
+      max-width: 340px;
+    }
+    @include for-size(desktop) {
+      max-width: 380px;
+    }
+  }
+
+  &__place {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    &__container {
+      display: flex;
+      justify-content: space-around;
+      gap: 10px;
+    }
+  }
+
+  &__line {
+    width: 100%;
+    border-bottom: 2px solid $default-blue;
+    padding-bottom: 5px;
+  }
+
+  &__container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+
+    &__btn {
+      cursor: pointer;
+      font-size: 12px;
+      color: $default-blue;
+      @include for-size(tablet) {
+        font-size: 14px;
+      }
+      @include for-size(laptop) {
+        font-size: 16px;
+      }
+      @include for-size(desktop) {
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__boxed {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &__input {
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: transparent;
+    padding: 4px 5px;
+    font-size: 12px;
+    border-bottom: 2px solid silver;
+
+    @include for-size(tablet) {
+      font-size: 14px;
+    }
+    @include for-size(laptop) {
+      font-size: 16px;
+    }
+    @include for-size(desktop) {
+      font-size: 18px;
+    }
+
+    &__label {
+      position: absolute;
+      top: 10%;
+      right: 0;
+      color: $default-blue;
+    }
+
+    &:focus {
+      border-bottom: 2px solid $default-blue;
+    }
+  }
+
+
+  &__text {
+    color: $default-blue;
+    font-size: 9px;  
+    max-width: 200px;
+    font-weight: 500;
+
+    @include for-size(tablet) {
+      font-size: 10px;
+    }
+  }
+
+  &__btn {
+    background-color: $default-blue;
+    color: $default-white;
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    width: 65%;
+
+    @include for-size(tablet) {
+      padding: 15px 10px;
+    }
+    @include for-size(laptop) {
+      padding: 15px 0px;
+      font-size: 16px;
+    }
+    @include for-size(desktop) {
+      padding: 14px 20px;
+      font-size: 18px;
+    }
+  }
+
+  &__icon {
+    color: $default-blue;
+    height: 24px;
+    width: 24px;
+  }
+}

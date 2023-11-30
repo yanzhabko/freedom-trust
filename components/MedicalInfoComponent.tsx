@@ -29,14 +29,6 @@ const MedicalInfoComponent: React.FC<MedicalInfoProps> = ({
         showError={!submitDisabled}
       />
       <div className={styles.form__first_box}>
-        {/* <InputComponent
-          label="Child name"
-          register={register}
-          registerName="childName"
-          errorMessage={errorMassage.childName?.message}
-          type="text"
-          showError={!submitDisabled}
-        /> */}
         <InputComponent
           label="Age"
           register={register}

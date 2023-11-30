@@ -2,3 +2,21 @@
 @import "@/style/container";
 @import "@/style/fonts";
 @import "@/style/colors";
+
+.donate_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    text-align: center;
+
+    @include for-size(tablet) {
+      gap: 55px;
+    }
+  }
+}
