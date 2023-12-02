@@ -91,15 +91,12 @@
     border: none;
     outline: transparent;
     padding: 4px 5px;
-    font-size: 12px;
+    font-size: 16px;
     border-bottom: 2px solid silver;
+    color: $default-blue;
+    font-weight: 600;
+    
 
-    @include for-size(tablet) {
-      font-size: 14px;
-    }
-    @include for-size(laptop) {
-      font-size: 16px;
-    }
     @include for-size(desktop) {
       font-size: 18px;
     }
@@ -120,11 +117,15 @@
   &__text {
     color: $default-blue;
     font-size: 9px;  
-    max-width: 200px;
+    width: calc(min(100%, 250px));
     font-weight: 500;
+
 
     @include for-size(tablet) {
       font-size: 10px;
+    }
+    @include for-size(laptop) {
+      font-size: 12px;
     }
   }
 

@@ -4,6 +4,7 @@ import classNames from "classnames";
 import { CiCircleInfo } from "react-icons/ci";
 
 const DonateForm = () => {
+  
   return (
     <form className={classNames(styles.form, styles.form__placeholder)}>
       <div className={classNames(styles.form__container, styles.form__line)}>
