@@ -6,7 +6,6 @@
 .form {
   height: auto;
   padding: 55px 20px;
-  // padding: 70px 40px;
   background-color: $default-white;
   border-radius: 15px;
   display: flex;
@@ -55,7 +54,7 @@
     display: flex;
     gap: 15px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 
     &__btn {
       cursor: pointer;
@@ -93,6 +92,7 @@
     padding: 4px 5px;
     font-size: 16px;
     border-bottom: 2px solid silver;
+    border-radius: 0;
     color: $default-blue;
     font-weight: 600;
     

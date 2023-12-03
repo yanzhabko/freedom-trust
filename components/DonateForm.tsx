@@ -4,12 +4,10 @@ import classNames from "classnames";
 import { CiCircleInfo } from "react-icons/ci";
 
 const DonateForm = () => {
-  
   return (
     <form className={classNames(styles.form, styles.form__placeholder)}>
       <div className={classNames(styles.form__container, styles.form__line)}>
         <div className={styles.form__container__btn}>One donate</div>
-        <div className={styles.form__container__btn}>Regular donate</div>
       </div>
       <div className={styles.form__boxed}>
         <input type="number" min={0} required className={styles.form__input} />
