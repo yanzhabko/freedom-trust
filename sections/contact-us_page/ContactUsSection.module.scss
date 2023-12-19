@@ -93,6 +93,7 @@
 
   &__btn {
     border: none;
+    cursor: pointer;
     background-color: $default-blue;
     color: $default-white;
     width: 48%;
@@ -108,5 +109,11 @@
       font-size: 18px;
       padding: 15px 0;
     }
+  }
+
+  button:disabled,
+  button[disabled] {
+    opacity: 0.8;
+    cursor: default;
   }
 }
